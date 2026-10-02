@@ -20,11 +20,6 @@ function sharedContent() {
       { number: '03', title: 'Project Marketing', description: 'We build awareness and interest around real-estate developments.', image: 'photo-1497366754035-f200968a6e72', alt: 'Light-filled space ready to welcome its next occupants' },
       { number: '04', title: 'Investment Opportunities', description: 'We help clients explore property opportunities with clear information.', image: 'photo-1564013799919-ab600027ffc6', alt: 'Modern home in a leafy neighborhood' }
     ],
-    testimonials: [
-      { quote: 'The team made everything much easier to understand and were always available when we had questions.', name: 'Ahmed R.', detail: 'Property client' },
-      { quote: 'The team listened carefully and helped us understand each step with confidence.', name: 'Client Name', detail: 'Investment client' },
-      { quote: 'A thoughtful, responsive team that made a complex decision feel manageable.', name: 'Client Name', detail: 'Development partner' }
-    ],
     inquirySubjects: subjects
   };
 }
@@ -33,7 +28,7 @@ router.get('/', async (req, res, next) => {
   try {
     const [projects, announcements, testimonials] = await Promise.all([
       Project.find({ isActive: true }).sort({ isFeatured: -1, createdAt: -1 }).lean(),
-      Announcement.find({ active: true }).sort({ featured: -1, startDate: -1 }).limit(3).lean(),
+      Announcement.find({ active: true }).sort({ startDate: -1, createdAt: -1 }).limit(3).lean(),
       Testimonial.find({ isActive: true }).sort({ date: -1 }).lean()
     ]);
     return res.render('index', Object.assign({
@@ -57,8 +52,19 @@ router.get('/contact', (req, res) => res.render('contact', {
 router.post('/contact', submitInquiry);
 router.get('/announcements', async (req, res, next) => {
   try {
-    const announcements = await Announcement.find({ active: true }).sort({ featured: -1, startDate: -1 }).lean();
+    const announcements = await Announcement.find({ active: true }).sort({ startDate: -1, createdAt: -1 }).lean();
     return res.render('announcements', { title: 'Announcements | MGM', page: 'announcements', announcements });
+  } catch (error) { return next(error); }
+});
+router.get('/announcements/:slug', async (req, res, next) => {
+  try {
+    const announcement = await Announcement.findOne({ slug: req.params.slug, active: true }).lean();
+    if (!announcement) return res.status(404).render('error', { message: 'This announcement could not be found.', error: {} });
+    return res.render('announcement-details', {
+      title: `${announcement.title} | MGM`,
+      page: 'announcements',
+      announcement
+    });
   } catch (error) { return next(error); }
 });
 router.get('/projects', async (req, res, next) => {

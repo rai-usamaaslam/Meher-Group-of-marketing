@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17324D">
+  <meta name="description" content="<%= announcement.description.slice(0, 160) %>">
+  <title><%= title %></title>
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/approachable.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/announcements.css">
+  <script src="/js/main.js" defer></script>
+</head>
+<body>
+  <%- include('./partials/navbar') %>
+  <main class="announcement-detail section-pad">
+    <a class="announcement-back" href="/announcements">← All Announcements</a>
+    <article>
+      <% if (announcement.image) { %>
+      <img class="announcement-detail-image" src="<%= announcement.image %>" alt="<%= announcement.title %>">
+      <% } else { %>
+      <img class="announcement-detail-image" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85" alt="<%= announcement.title %>">
+      <% } %>
+      <div class="announcement-detail-copy">
+        <p class="announcement-date"><time datetime="<%= new Date(announcement.startDate).toISOString() %>"><%= new Date(announcement.startDate).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) %></time></p>
+        <h1><%= announcement.title %></h1>
+        <div class="announcement-detail-body"><%= announcement.description %></div>
+        <a class="announcement-back" href="/announcements">← Back to Announcements</a>
+      </div>
+    </article>
+  </main>
+  <%- include('./partials/footer') %>
+</body>
+</html>

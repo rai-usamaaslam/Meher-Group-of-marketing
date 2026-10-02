@@ -1,5 +1,27 @@
 <header class="site-header <%= page !== 'home' ? 'subpage-header' : '' %>" id="site-header">
-  <a class="wordmark" href="<%= page === 'home' ? '#home' : '/' %>" aria-label="MGM, Meher Group of Marketing home"><span class="wordmark-monogram">MGM</span><span class="wordmark-name">MEHER GROUP<br>OF MARKETING</span></a>
-  <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>
-  <nav class="site-nav" id="site-nav" aria-label="Main navigation"><a href="<%= page === 'home' ? '#home' : '/' %>">Home</a><a href="/about" <%= page === 'about' ? 'aria-current="page"' : '' %>>About</a><a href="/services" <%= page === 'services' ? 'aria-current="page"' : '' %>>Services</a><a href="/projects" <%= page === 'projects' ? 'aria-current="page"' : '' %>>Projects</a><a href="/announcements" <%= page === 'announcements' ? 'aria-current="page"' : '' %>>Announcements</a><a href="/contact" <%= page === 'contact' ? 'aria-current="page"' : '' %>>Contact</a><a class="nav-talk" href="/contact">Let’s talk <span>↗</span></a></nav>
+  <a class="wordmark" href="<%= page === 'home' ? '#home' : '/' %>" aria-label="MGM home">
+    <span class="wordmark-monogram">MGM</span>
+  </a>
+  <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+    <a href="<%= page === 'home' ? '#home' : '/' %>" <%= page === 'home' ? 'aria-current="page"' : '' %>>Home</a>
+    <a href="/about" <%= page === 'about' ? 'aria-current="page"' : '' %>>About</a>
+    <a href="/services" <%= page === 'services' ? 'aria-current="page"' : '' %>>Services</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="projects-menu" <%= page === 'projects' ? 'aria-current="page"' : '' %>>
+        Projects <span class="nav-dropdown-arrow" aria-hidden="true"></span>
+      </button>
+      <div class="nav-dropdown-menu" id="projects-menu">
+        <a href="/projects">Our Projects</a>
+        <a href="/projects#ongoing">Ongoing Projects</a>
+        <a href="/projects#completed">Completed Projects</a>
+        <a href="/projects#sale">Properties for Sale</a>
+        <a href="/projects#rent">Properties for Rent</a>
+      </div>
+    </div>
+    <a class="nav-announcements" href="/announcements" <%= page === 'announcements' ? 'aria-current="page"' : '' %>>Announcements</a>
+    <a class="nav-talk" href="/contact">Let's Talk</a>
+  </nav>
+  <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
+    <span></span><span></span>
+  </button>
 </header>

@@ -67,7 +67,7 @@ router.post('/inquiries/:id/delete', requireAdmin, inquiry.deleteInquiry);
 router.use((error, req, res, next) => {
   if (error instanceof multer.MulterError || error.message === 'Only JPEG, PNG, WebP, and GIF image files are allowed.') {
     req.session.formError = error.code === 'LIMIT_FILE_SIZE' ? 'Images must be 5MB or smaller.' : 'Please upload valid image files.';
-    return res.redirect(req.get('referer') || '/admin/projects');
+    return res.redirect(req.get('referer') || (req.originalUrl.indexOf('/testimonials') !== -1 ? '/admin/testimonials' : '/admin/projects'));
   }
   return next(error);
 });

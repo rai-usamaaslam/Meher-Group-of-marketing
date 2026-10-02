@@ -1,0 +1,24 @@
+<%- include('./head') %><%- include('./nav') %>
+<section class="admin-panel form-panel">
+  <div class="panel-heading">
+    <div><p class="admin-kicker"><%= editing ? 'UPDATE CLIENT FEEDBACK' : 'NEW CLIENT FEEDBACK' %></p><h2><%= editing ? 'Edit testimonial' : 'Add testimonial' %></h2></div>
+    <a class="admin-link" href="/admin/testimonials">← Back to testimonials</a>
+  </div>
+  <% if (formError) { %><div class="notice notice-error" role="alert"><%= formError %></div><% } %>
+  <form class="admin-form" action="<%= editing ? '/admin/testimonials/edit/' + testimonial._id : '/admin/testimonials/create' %>" method="post" enctype="multipart/form-data">
+    <div class="form-grid">
+      <label>Name<input name="name" required maxlength="120" value="<%= testimonial.name || '' %>"></label>
+      <label>Date<input type="date" name="date" required value="<%= testimonial.date ? new Date(testimonial.date).toISOString().slice(0, 10) : new Date().toISOString().slice(0, 10) %>"></label>
+      <label class="span-2">Message<textarea name="message" required maxlength="2000" rows="6"><%= testimonial.message || '' %></textarea></label>
+      <label>Profile image<input type="file" name="image" accept="image/png,image/jpeg,image/webp,image/gif"></label>
+      <label>Or profile image URL<input type="url" name="imageUrl" placeholder="https://"></label>
+    </div>
+    <% if (editing && testimonial.image) { %>
+    <div class="existing-main"><img src="<%= testimonial.image %>" alt="Current profile image"><span>Current profile image</span></div>
+    <div class="form-switches"><label><input type="checkbox" name="removeImage"> Remove current profile image</label></div>
+    <% } %>
+    <div class="form-switches"><label><input type="checkbox" name="isActive" <%= testimonial.isActive === true || testimonial.isActive === 'on' ? 'checked' : '' %>> Publish this testimonial on the website</label></div>
+    <div class="form-actions"><button class="admin-button" type="submit"><%= editing ? 'Save Changes' : 'Create testimonial' %> <span>→</span></button><a class="admin-cancel" href="/admin/testimonials">Cancel</a></div>
+  </form>
+</section>
+<%- include('./foot') %>
