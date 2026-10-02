@@ -1,6 +1,7 @@
 const express = require('express');
 const Project = require('../models/Project');
 const Announcement = require('../models/Announcement');
+const Testimonial = require('../models/Testimonial');
 const { categoryLabels, publicProjectDetails } = require('../controllers/projectController');
 const { submitInquiry, subjects } = require('../controllers/inquiryController');
 const router = express.Router();
@@ -30,12 +31,13 @@ function sharedContent() {
 
 router.get('/', async (req, res, next) => {
   try {
-    const [projects, announcements] = await Promise.all([
+    const [projects, announcements, testimonials] = await Promise.all([
       Project.find({ isActive: true }).sort({ isFeatured: -1, createdAt: -1 }).lean(),
-      Announcement.find({ active: true }).sort({ featured: -1, startDate: -1 }).limit(3).lean()
+      Announcement.find({ active: true }).sort({ featured: -1, startDate: -1 }).limit(3).lean(),
+      Testimonial.find({ isActive: true }).sort({ date: -1 }).lean()
     ]);
     return res.render('index', Object.assign({
-      title: 'MGM | Meher Group of Marketing', page: 'home', projects, announcements, categoryLabels
+      title: 'MGM | Meher Group of Marketing', page: 'home', projects, announcements, testimonials, categoryLabels
     }, sharedContent()));
   } catch (error) { return next(error); }
 });
@@ -57,6 +59,18 @@ router.get('/announcements', async (req, res, next) => {
   try {
     const announcements = await Announcement.find({ active: true }).sort({ featured: -1, startDate: -1 }).lean();
     return res.render('announcements', { title: 'Announcements | MGM', page: 'announcements', announcements });
+  } catch (error) { return next(error); }
+});
+router.get('/projects', async (req, res, next) => {
+  try {
+    const projects = await Project.find({ isActive: true }).sort({ isFeatured: -1, createdAt: -1 }).lean();
+    const projectGroups = {
+      ongoing: projects.filter((project) => project.category === 'ongoing'),
+      completed: projects.filter((project) => project.category === 'completed'),
+      sale: projects.filter((project) => ['sale', 'commercial', 'other'].includes(project.category)),
+      rental: projects.filter((project) => project.category === 'rental')
+    };
+    return res.render('projects/index', { title: 'Projects | MGM', page: 'projects', projectGroups, categoryLabels });
   } catch (error) { return next(error); }
 });
 router.get('/projects/:slug', publicProjectDetails);

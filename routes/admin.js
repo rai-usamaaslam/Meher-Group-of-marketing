@@ -6,6 +6,7 @@ const admin = require('../controllers/adminController');
 const project = require('../controllers/projectController');
 const inquiry = require('../controllers/inquiryController');
 const announcement = require('../controllers/announcementController');
+const testimonial = require('../controllers/testimonialController');
 const { requireAdmin, redirectIfAuthenticated } = require('../middleware/auth');
 
 const router = express.Router();
@@ -23,6 +24,7 @@ const upload = multer({
 });
 const projectUpload = upload.fields([{ name: 'featuredImage', maxCount: 1 }, { name: 'gallery', maxCount: 8 }]);
 const announcementUpload = upload.single('image');
+const testimonialUpload = upload.single('image');
 
 router.get('/login', redirectIfAuthenticated, admin.loginForm);
 router.post('/login', redirectIfAuthenticated, admin.login);
@@ -48,6 +50,14 @@ router.get('/announcements/edit/:id', requireAdmin, announcement.editForm);
 router.post('/announcements/edit/:id', requireAdmin, announcementUpload, announcement.update);
 router.post('/announcements/delete/:id', requireAdmin, announcement.remove);
 router.post('/announcements/toggle/:id', requireAdmin, announcement.toggle);
+
+router.get('/testimonials', requireAdmin, testimonial.list);
+router.get('/testimonials/create', requireAdmin, testimonial.createForm);
+router.post('/testimonials/create', requireAdmin, testimonialUpload, testimonial.create);
+router.get('/testimonials/edit/:id', requireAdmin, testimonial.editForm);
+router.post('/testimonials/edit/:id', requireAdmin, testimonialUpload, testimonial.update);
+router.post('/testimonials/delete/:id', requireAdmin, testimonial.remove);
+router.post('/testimonials/toggle/:id', requireAdmin, testimonial.toggle);
 
 router.get('/inquiries', requireAdmin, inquiry.listInquiries);
 router.get('/inquiries/:id', requireAdmin, inquiry.inquiryDetails);

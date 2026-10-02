@@ -2,9 +2,9 @@ const Project = require('../models/Project');
 
 const categoryLabels = {
   ongoing: 'Ongoing Projects',
-  rental: 'For Rent',
+  rental: 'Properties for Rent',
   completed: 'Completed',
-  sale: 'For Sale',
+  sale: 'Properties for Sale',
   commercial: 'Commercial',
   other: 'Other'
 };

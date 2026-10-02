@@ -1,0 +1,6 @@
+/* Service-page content is intentionally informational: no contact CTA or icon controls. */
+.why-list article{display:grid;grid-template-columns:34px 1fr;gap:10px 14px;align-items:center;padding:17px 4px;border-bottom:1px solid var(--line)}
+.why-list article span{grid-row:1/3;color:var(--terracotta);font-size:11px}
+.why-list article strong{font:650 clamp(18px,2.1vw,25px)/1.3 var(--display);letter-spacing:-.03em}
+.why-list article small{grid-column:2;color:var(--muted);font-size:13px;line-height:1.5}
+@media(max-width:760px){.why-list article{grid-template-columns:28px 1fr;gap:7px 10px;padding:14px 0}.why-list article strong{font-size:18px}.why-list article small{font-size:12px}}
