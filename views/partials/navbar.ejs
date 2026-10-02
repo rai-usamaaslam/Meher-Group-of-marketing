@@ -1,0 +1,5 @@
+<header class="site-header <%= page !== 'home' ? 'subpage-header' : '' %>" id="site-header">
+  <a class="wordmark" href="<%= page === 'home' ? '#home' : '/' %>" aria-label="MGM, Meher Group of Marketing home"><span class="wordmark-monogram">MGM</span><span class="wordmark-name">MEHER GROUP<br>OF MARKETING</span></a>
+  <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>
+  <nav class="site-nav" id="site-nav" aria-label="Main navigation"><a href="<%= page === 'home' ? '#home' : '/' %>">Home</a><a href="/about" <%= page === 'about' ? 'aria-current="page"' : '' %>>About</a><a href="/services" <%= page === 'services' ? 'aria-current="page"' : '' %>>Services</a><a href="<%= page === 'home' ? '#projects' : '/#projects' %>">Projects</a><a href="/announcements" <%= page === 'announcements' ? 'aria-current="page"' : '' %>>Announcements</a><a href="/contact" <%= page === 'contact' ? 'aria-current="page"' : '' %>>Contact</a><a class="nav-talk" href="/contact">Let’s talk <span>↗</span></a></nav>
+</header>

@@ -1,0 +1,21 @@
+<section class="testimonials section-pad" id="testimonials">
+    <div class="testimonial-heading">
+        <p class="eyebrow"><span></span> WHAT OUR CLIENTS SAY</p>
+        <h2>It’s better<br><em>together.</em></h2>
+    </div>
+    <div class="testimonial-content">
+        <div class="quote-mark" aria-hidden="true">“</div>
+        <div class="testimonial-slides">
+            <% testimonials.forEach(function(item, index) { %>
+                <blockquote class="testimonial-slide <%= index === 0 ? 'is-active' : '' %>" data-slide="<%= index %>" aria-hidden="<%= index !== 0 %>">
+                    <p>“
+                        <%= item.quote %>”</p>
+                    <footer><strong><%= item.name %></strong><span><%= item.detail %></span></footer>
+                </blockquote>
+                <% }); %>
+        </div>
+        <div class="carousel-controls"><button class="carousel-button" type="button" data-carousel="previous" aria-label="Previous testimonial">←</button><span class="carousel-count"><b>01</b> / <%= String(testimonials.length).padStart(2, '0') %></span><button class="carousel-button"
+                type="button" data-carousel="next" aria-label="Next testimonial">→</button></div>
+        <p class="data-note">Replace this example with an approved client testimonial before launch.</p>
+    </div>
+</section>

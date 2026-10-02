@@ -1,0 +1,8 @@
+<%- include('./head') %><%- include('./nav') %>
+<section class="admin-panel inquiry-detail">
+  <div class="panel-heading"><div><p class="admin-kicker">CONTACT INQUIRY</p><h2><%= inquiry.name %></h2></div><a class="admin-link" href="/admin/inquiries">← All inquiries</a></div>
+  <dl class="inquiry-facts"><div><dt>Email</dt><dd><a href="mailto:<%= inquiry.email %>"><%= inquiry.email %></a></dd></div><div><dt>Phone</dt><dd><a href="tel:<%= inquiry.phone %>"><%= inquiry.phone %></a></dd></div><div><dt>Subject</dt><dd><%= inquiry.subject %></dd></div><div><dt>Received</dt><dd><%= new Date(inquiry.createdAt).toLocaleString() %></dd></div></dl>
+  <div class="inquiry-message"><p class="admin-kicker">MESSAGE</p><p><%= inquiry.message %></p></div>
+  <div class="detail-actions"><form action="/admin/inquiries/<%= inquiry._id %>/status" method="post"><label>Inquiry Status<select name="status"><% ['New', 'Contacted', 'Closed'].forEach(function(status) { %><option <%= inquiry.status === status ? 'selected' : '' %>><%= status %></option><% }); %></select></label><button class="admin-button" type="submit">Save Status <span>→</span></button></form><form action="/admin/inquiries/<%= inquiry._id %>/delete" method="post" data-confirm="Are you sure you want to delete this inquiry? This cannot be undone."><button class="delete-button" type="submit">Delete inquiry</button></form></div>
+</section>
+<%- include('./foot') %>

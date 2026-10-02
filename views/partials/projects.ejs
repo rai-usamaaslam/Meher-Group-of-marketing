@@ -1,0 +1,40 @@
+<section class="project-section section-pad" id="projects" aria-labelledby="projects-title">
+  <div class="project-heading">
+    <p class="eyebrow"><span></span> PROPERTY AND DEVELOPMENT</p>
+    <h2 id="projects-title">Explore Our <em>Projects</em></h2>
+    <p>Take a look at the properties and projects we’re currently working with.</p>
+  </div>
+
+  <div class="project-filters" aria-label="Filter projects">
+    <button class="project-filter is-active" type="button" data-project-filter="all">All</button>
+    <button class="project-filter" type="button" data-project-filter="ongoing">Ongoing Projects</button>
+    <button class="project-filter" type="button" data-project-filter="rental">For Rent</button>
+  </div>
+
+  <% if (projects.length) { %>
+    <div class="project-list" data-project-list>
+      <% projects.forEach(function(project) { %>
+        <article class="project-row reveal" data-project-category="<%= project.category %>">
+          <a class="project-image" href="/projects/<%= project.slug %>" aria-label="View <%= project.title %>">
+            <img src="<%= project.featuredImage || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=82' %>" alt="<%= project.title %>" loading="lazy" decoding="async" width="760" height="560">
+            <% if (project.isFeatured) { %><span>Featured</span><% } %>
+          </a>
+          <div class="project-copy">
+            <p class="eyebrow"><span></span> <%= categoryLabels[project.category] || project.category %></p>
+            <h3><%= project.title %></h3>
+            <p class="project-location"><%= project.location %></p>
+            <% if (project.status) { %><p class="project-status"><%= project.status %></p><% } %>
+            <% if (project.propertyType || project.price || project.priceLabel) { %>
+              <p class="project-meta"><%= [project.propertyType, [project.priceLabel, project.price].filter(Boolean).join(' ')].filter(Boolean).join(' · ') %></p>
+            <% } %>
+            <p class="project-description"><%= project.shortDescription %></p>
+            <a class="text-link" href="/projects/<%= project.slug %>">View details <span>↗</span></a>
+          </div>
+        </article>
+      <% }); %>
+    </div>
+    <p class="project-empty" hidden>No projects in this category just yet. Please check back soon.</p>
+  <% } else { %>
+    <div class="project-empty is-static"><p>New property listings will appear here as they become available.</p><a class="button button-primary" href="/contact">Ask about a property <span>↗</span></a></div>
+  <% } %>
+</section>

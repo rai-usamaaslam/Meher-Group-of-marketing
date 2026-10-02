@@ -1,0 +1,4 @@
+<section class="services-section section-pad" id="services">
+  <div class="section-intro"><p class="eyebrow"><span></span> HOW WE CAN HELP</p><h2>How we can <em>help.</em></h2><p>Whatever stage you’re at, we’re here to make the next step easier.</p></div>
+  <div class="service-list"><% services.forEach(function(service) { %><article class="service-row reveal"><span class="service-number"><%= service.number %></span><div class="service-copy"><h3><%= service.title %></h3><p><%= service.description %></p></div><img src="https://images.unsplash.com/<%= service.image %>?auto=format&fit=crop&w=900&q=78" alt="<%= service.alt %>" loading="lazy" decoding="async" width="440" height="290"></article><% }); %></div>
+</section>

@@ -1,0 +1,15 @@
+<aside class="admin-sidebar">
+  <a class="admin-brand" href="/admin"><strong>MGM</strong><span>Meher Group<br>of Marketing</span></a>
+  <nav aria-label="Admin navigation">
+    <a class="<%= page === 'dashboard' ? 'is-active' : '' %>" href="/admin">Overview</a>
+    <a class="<%= page === 'projects' ? 'is-active' : '' %>" href="/admin/projects">Projects</a>
+    <a class="<%= page === 'announcements' ? 'is-active' : '' %>" href="/admin/announcements">Announcements</a>
+    <a class="<%= page === 'inquiries' ? 'is-active' : '' %>" href="/admin/inquiries">Inquiries</a>
+    <a class="<%= page === 'settings' ? 'is-active' : '' %>" href="/admin/settings">Account settings</a>
+    <a href="/" target="_blank" rel="noopener">View website ↗</a>
+  </nav>
+  <form action="/admin/logout" method="post"><button type="submit">Sign out</button></form>
+</aside>
+<main class="admin-main">
+  <header class="admin-header"><div><p class="admin-kicker">MGM ADMIN</p><h1><%= page === 'dashboard' ? 'Dashboard' : title.split('|')[0].trim() %></h1></div><span class="admin-user">Signed in as <strong><%= adminName %></strong></span></header>
+  <% if (flash) { %><div class="notice notice-<%= flash.type %>" role="status"><%= flash.text %></div><% } %>

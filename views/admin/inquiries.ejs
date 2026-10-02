@@ -1,0 +1,6 @@
+<%- include('./head') %><%- include('./nav') %>
+<section class="admin-panel">
+  <div class="panel-heading"><div><p class="admin-kicker">CONTACT FORM LEADS</p><h2>Inquiries</h2></div><span class="count-chip"><%= inquiries.length %> total</span></div>
+  <% if (inquiries.length) { %><div class="table-wrap"><table class="admin-table"><thead><tr><th>Name</th><th>Phone</th><th>Email</th><th>Subject</th><th>Status</th><th>Date</th><th></th></tr></thead><tbody><% inquiries.forEach(function(inquiry) { %><tr><td><strong><%= inquiry.name %></strong></td><td><%= inquiry.phone %></td><td><a class="email-link" href="mailto:<%= inquiry.email %>"><%= inquiry.email %></a></td><td><%= inquiry.subject %></td><td><b class="status status-<%= inquiry.status.toLowerCase() %>"><%= inquiry.status %></b></td><td><%= new Date(inquiry.createdAt).toLocaleDateString() %></td><td><a class="admin-link" href="/admin/inquiries/<%= inquiry._id %>">Open →</a></td></tr><% }); %></tbody></table></div><% } else { %><div class="empty-state"><h3>No inquiries yet</h3><p>New messages from the website contact form will appear here.</p></div><% } %>
+</section>
+<%- include('./foot') %>

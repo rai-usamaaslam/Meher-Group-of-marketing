@@ -1,0 +1,18 @@
+<%- include('./head') %><%- include('./nav') %>
+<section class="admin-stats" aria-label="Dashboard statistics">
+  <article><span>Total Projects</span><strong><%= stats.total %></strong></article>
+  <article><span>Active Projects</span><strong><%= stats.active %></strong></article>
+  <article><span>Ongoing Projects</span><strong><%= stats.ongoing %></strong></article>
+  <article><span>Rental Properties</span><strong><%= stats.rental %></strong></article>
+  <article><span>Published announcements</span><strong><%= stats.announcementCount %></strong></article>
+  <article><span>New inquiries</span><strong><%= stats.newInquiries %></strong></article>
+</section>
+<section class="admin-panel">
+  <div class="panel-heading"><div><p class="admin-kicker">QUICK ACTIONS</p><h2>Keep your listings current</h2></div><div class="button-group"><a class="admin-button" href="/admin/projects/create">Add Project <span>+</span></a><a class="admin-button" href="/admin/announcements/create">Add announcement <span>+</span></a></div></div>
+  <p>Projects marked active appear on the public website automatically. Feature a project to place it first in the list.</p>
+</section>
+<section class="admin-panel">
+  <div class="panel-heading"><div><p class="admin-kicker">LATEST LEADS</p><h2>Recent inquiries</h2></div><a class="admin-link" href="/admin/inquiries">See all inquiries →</a></div>
+  <% if (recentInquiries.length) { %><div class="mini-list"><% recentInquiries.forEach(function(inquiry) { %><a href="/admin/inquiries/<%= inquiry._id %>"><span><strong><%= inquiry.name %></strong><small><%= inquiry.subject %> · <%= new Date(inquiry.createdAt).toLocaleDateString() %></small></span><b class="status status-<%= inquiry.status.toLowerCase() %>"><%= inquiry.status %></b></a><% }); %></div><% } else { %><p class="empty-copy">Messages from the contact form will show up here.</p><% } %>
+</section>
+<%- include('./foot') %>

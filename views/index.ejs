@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#17324D">
+    <meta name="description" content="Meher Group of Marketing helps you buy, sell, and explore property with clear, friendly guidance.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="MGM | Meher Group of Marketing">
+    <meta property="og:description" content="Building trust. Creating opportunities.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/approachable.css">
+    <script src="/js/main.js" defer></script>
+</head>
+
+<body>
+    <%- include('./partials/navbar') %>
+        <main>
+            <%- include('./partials/hero') %>
+                <%- include('./partials/about') %>
+                    <%- include('./partials/stats') %>
+                        <%- include('./partials/services') %>
+                            <%- include('./partials/projects') %>
+                                <%- include('./partials/announcements') %>
+                                <%- include('./partials/testimonials') %>
+
+        </main>
+        <%- include('./partials/footer') %>
+</body>
+
+</html>

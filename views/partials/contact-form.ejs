@@ -1,0 +1,40 @@
+<section class="contact-section section-pad" id="contact" aria-labelledby="contact-title">
+  <div class="contact-info">
+    <p class="eyebrow"><span></span> START A CONVERSATION</p>
+    <h2 id="contact-title">Let’s talk about what you’re <em>looking for.</em></h2>
+    <p>Have a question about a property, project, or rental? Get in touch and we’ll help you with the next step.</p>
+    <div class="contact-details">
+      <div><span>PHONE</span><strong>[Add MGM phone]</strong></div>
+      <div><span>WHATSAPP</span><strong>[Add MGM WhatsApp]</strong></div>
+      <div><span>EMAIL</span><strong>[Add MGM email]</strong></div>
+      <div><span>OFFICE</span><strong>[Add office address]</strong></div>
+      <div><span>HOURS</span><strong>[Add business hours]</strong></div>
+      <div><span>GOOGLE MAPS</span><strong>[Add Google Maps location]</strong></div>
+      <div><span>SOCIAL MEDIA</span><strong>[Add social media links]</strong></div>
+    </div>
+    <p class="data-note">These are intentionally marked placeholders. Add verified MGM contact details before publishing.</p>
+  </div>
+
+  <form class="contact-form" id="contact-form" action="/contact" method="post" novalidate>
+    <label for="full-name">Full Name</label>
+    <input id="full-name" name="name" autocomplete="name" required minlength="2">
+    <span class="field-error" data-error="name"></span>
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" autocomplete="email" required>
+    <span class="field-error" data-error="email"></span>
+    <label for="phone">Phone</label>
+    <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+    <span class="field-error" data-error="phone"></span>
+    <label for="subject">Subject / Inquiry Type</label>
+    <select id="subject" name="subject" required>
+      <option value="" selected disabled>Choose an option</option>
+      <% inquirySubjects.forEach(function(subject) { %><option value="<%= subject %>"><%= subject %></option><% }); %>
+    </select>
+    <span class="field-error" data-error="subject"></span>
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="5" required minlength="10"></textarea>
+    <span class="field-error" data-error="message"></span>
+    <button class="button button-dark" type="submit"><span class="submit-label">Send Message</span><span aria-hidden="true">↗</span></button>
+    <p class="form-status" role="status" aria-live="polite"></p>
+  </form>
+</section>
