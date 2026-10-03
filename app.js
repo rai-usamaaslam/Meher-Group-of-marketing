@@ -31,8 +31,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 const sectionAssets = new Set([
-    'site-shell', 'navbar', 'hero', 'about', 'stats', 'services', 'projects',
-    'project-card', 'gallery', 'testimonials', 'latest-news', 'contact', 'footer', 'team'
+    'site-shell', 'navbar', 'hero', 'about', 'services', 'projects',
+    'project-card', 'latest-news', 'contact', 'footer'
 ]);
 app.get('/section-assets/:section/:asset', (req, res, next) => {
     const { section, asset } = req.params;
@@ -48,6 +48,7 @@ app.use(function(req, res, next) {
     if (req.session) delete req.session.flash;
     res.locals.year = new Date().getFullYear();
     res.locals.siteUrl = process.env.BASE_URL || `${req.protocol}://${req.get('host')}`;
+    res.locals.currentPath = req.path;
     next();
 });
 
@@ -65,6 +66,7 @@ app.use(function(err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
+    res.locals.statusCode = err.status || 500;
 
     // render the error page
     res.status(err.status || 500);

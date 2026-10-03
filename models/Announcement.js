@@ -26,31 +26,12 @@ const announcementSchema = new mongoose.Schema({
         default: null,
     },
 
-    type: {
-        type: String,
-        enum: ["deal", "announcement", "project-launch"],
-        default: "announcement",
-    },
-
     startDate: {
         type: Date,
         default: Date.now,
     },
 
-    endDate: {
-        type: Date,
-        default: null,
-    },
 
-    active: {
-        type: Boolean,
-        default: true,
-    },
-
-    featured: {
-        type: Boolean,
-        default: false,
-    },
 }, {
     timestamps: true,
 });

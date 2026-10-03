@@ -345,26 +345,6 @@ main h3:not(.no-type){
   }
 }
 
-.home-testimonials{
-  padding-top:clamp(42px, 5vw, 64px);
-  padding-bottom:clamp(42px, 5vw, 64px);
-  background:var(--navy);
-}
-
-.home-empty{
-  margin:0;
-  color:var(--muted);
-}
-
-.home-testimonials .eyebrow,
-.home-testimonials h2{
-  color:#fff;
-}
-
-.home-testimonials .home-empty{
-  color:rgba(255, 255, 255, .7);
-}
-
 .feature-icon{
   display:inline-flex;
   min-width:39px;
@@ -403,4 +383,3 @@ main h3:not(.no-type){
     transition:none;
   }
 }
-

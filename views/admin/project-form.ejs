@@ -10,24 +10,18 @@
       <label class="span-2">Short Description<textarea name="shortDescription" required maxlength="320" rows="3"><%= project.shortDescription || '' %></textarea></label>
       <label class="span-2">Full Description<textarea name="description" required maxlength="6000" rows="7"><%= project.description || '' %></textarea></label>
       <label class="span-2">Location<input name="location" required maxlength="180" value="<%= project.location || '' %>"></label>
-      <label>Price / Rent<input name="price" maxlength="100" placeholder="e.g. PKR 75,000" value="<%= project.price || '' %>"></label>
-      <label>Price Label<input name="priceLabel" maxlength="100" placeholder="e.g. Starting from" value="<%= project.priceLabel || '' %>"></label>
       <label>Property Type<input name="propertyType" maxlength="100" placeholder="e.g. Apartment" value="<%= project.propertyType || '' %>"></label>
       <label>Area<input name="area" type="number" min="0" step="any" value="<%= project.area === undefined ? '' : project.area %>"></label>
       <label>Area Unit<input name="areaUnit" maxlength="30" placeholder="sq ft" value="<%= project.areaUnit || 'sq ft' %>"></label>
       <label>Bedrooms<input name="bedrooms" type="number" min="0" step="1" value="<%= project.bedrooms === undefined ? '' : project.bedrooms %>"></label>
       <label>Bathrooms<input name="bathrooms" type="number" min="0" step="1" value="<%= project.bathrooms === undefined ? '' : project.bathrooms %>"></label>
       <label class="span-2">Features <small>Separate items with commas or new lines.</small><textarea name="features" rows="3"><%= Array.isArray(project.features) ? project.features.join('\n') : (project.features || '') %></textarea></label>
-      <label>Contact Phone<input name="contactPhone" maxlength="60" value="<%= project.contactPhone || '' %>"></label>
-      <label>Contact Email<input type="email" name="contactEmail" maxlength="160" value="<%= project.contactEmail || '' %>"></label>
-      <label class="span-2">URL Slug <small>Leave unchanged unless you need a custom URL.</small><input name="slug" maxlength="160" value="<%= project.slug || '' %>"></label>
     </div>
     <fieldset class="upload-fieldset"><legend>Images</legend>
       <% if (editing && project.featuredImage) { %><div class="existing-main"><img src="<%= project.featuredImage %>" alt="Current main image"><span>Current main image</span></div><% } %>
-      <div class="form-grid"><label>Main Image<input type="file" name="featuredImage" accept="image/png,image/jpeg,image/webp,image/gif"></label><label>Or Main Image URL<input type="url" name="featuredImageUrl" placeholder="https://"></label><label class="span-2">Gallery Images <small>Up to 8 image files, 5MB each.</small><input type="file" name="gallery" accept="image/png,image/jpeg,image/webp,image/gif" multiple></label></div>
+      <div class="form-grid"><label>Main Image<input type="file" name="featuredImage" accept="image/png,image/jpeg,image/webp,image/gif"></label><label class="span-2">Gallery Images <small>Upload up to 5 images. Each image is optimized automatically.</small><input data-gallery-input type="file" name="gallery" accept="image/png,image/jpeg,image/webp,image/gif" multiple></label><div class="gallery-preview span-2" data-gallery-preview aria-live="polite"></div></div>
       <% if (editing && project.gallery && project.gallery.length) { %><div class="gallery-management"><p>Current gallery — check images to remove:</p><div><% project.gallery.forEach(function(image) { %><label><img src="<%= image %>" alt="Gallery image"><input type="checkbox" name="removeGallery" value="<%= image %>"> Remove</label><% }); %></div></div><% } %>
     </fieldset>
-    <div class="form-switches"><label><input type="checkbox" name="isFeatured" <%= project.isFeatured === true || project.isFeatured === 'on' ? 'checked' : '' %>> Feature this project on the homepage</label><label><input type="checkbox" name="isActive" <%= project.isActive === true || project.isActive === 'on' ? 'checked' : '' %>> Publish this project publicly</label></div>
     <div class="form-actions"><button class="admin-button" type="submit"><%= editing ? 'Save Changes' : 'Create Project' %> <span>→</span></button><a class="admin-cancel" href="/admin/projects">Cancel</a></div>
   </form>
 </section>

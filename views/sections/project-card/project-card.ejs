@@ -8,7 +8,7 @@
     <div class="project-image-placeholder" role="img" aria-label="Image unavailable for <%= project.title %>">MGM</div>
     <% } %>
     <div class="project-overlay" aria-hidden="true"></div>
-    <span class="project-status"><%= project.isFeatured ? 'Featured' : (project.status || 'New') %></span>
+    <span class="project-status"><%= project.status || 'New' %></span>
     <button class="project-favorite" type="button" data-project-favorite data-project-title="<%= project.title %>" aria-pressed="false" aria-label="Add <%= project.title %> to favorites">♡</button>
     <button class="project-share" type="button" data-project-share data-project-title="<%= project.title %>" data-share-url="/projects/<%= project.slug %>" aria-label="Share <%= project.title %>">↗</button>
   </div>
@@ -33,10 +33,6 @@
     </div>
 
     <div class="project-bottom">
-      <p class="project-price">
-        <small><%= project.category === 'rental' ? 'Rental price' : 'Starting from' %></small>
-        <strong><%= [project.priceLabel, project.price].filter(Boolean).join(' ') || 'Contact for price' %></strong>
-      </p>
       <a class="project-button" href="/projects/<%= project.slug %>">View Details <span aria-hidden="true">→</span></a>
     </div>
     <span class="project-feedback" data-project-feedback aria-live="polite"></span>

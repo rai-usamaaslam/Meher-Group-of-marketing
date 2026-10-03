@@ -3,18 +3,19 @@
   page: page,
   description: (typeof description !== 'undefined' && description) ? description : 'Meher Group of Marketing and Construction (MGM) helps clients buy, sell, invest, and develop property in Islamabad with clear, trusted guidance.',
   siteUrl: typeof siteUrl !== 'undefined' ? siteUrl : '',
-  cssSections: ['site-shell', 'navbar', 'hero', 'about', 'stats', 'services', 'projects', 'project-card', 'testimonials', 'latest-news', 'footer'],
-  jsSections: ['navbar', 'site-shell', 'stats', 'services', 'projects', 'project-card', 'testimonials', 'latest-news']
+  cssSections: ['site-shell', 'navbar', 'hero', 'about', 'services', 'projects', 'latest-news', 'footer'],
+  jsSections: ['navbar', 'site-shell', 'services', 'latest-news']
 }) %>
 <body>
   <%- include('./sections/navbar/navbar') %>
   <main>
     <%- include('./sections/hero/hero') %>
     <%- include('./sections/about/about-preview') %>
-    <%- include('./sections/stats/stats') %>
+    <%- include('./sections/projects/projects') %>
     <%- include('./sections/services/services') %>
-    <%- include('./sections/project-card/project-card', { projects: projects, categoryLabels: categoryLabels }) %>
-    <%- include('./sections/testimonials/testimonials') %>
+    <section class="home-motivational section-pad" aria-label="MGM promise">
+      <p>Built on trust, guided by growth, and focused on finding the right place for what comes next.</p>
+    </section>
     <%- include('./sections/latest-news/latest-news') %>
   </main>
   <%- include('./sections/footer/footer') %>

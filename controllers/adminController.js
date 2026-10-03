@@ -9,7 +9,7 @@ async function dashboard(req, res, next) {
     const [total, active, ongoing, rental, announcementCount, newInquiries, recentInquiries] = await Promise.all([
       Project.countDocuments(), Project.countDocuments({ isActive: true }),
       Project.countDocuments({ category: 'ongoing' }), Project.countDocuments({ category: 'rental' }),
-      Announcement.countDocuments({ active: true }), Inquiry.countDocuments({ status: 'New' }),
+      Announcement.countDocuments(), Inquiry.countDocuments({ status: 'New' }),
       Inquiry.find().sort({ createdAt: -1 }).limit(5).lean()
     ]);
     return res.render('admin/dashboard', {
@@ -27,7 +27,7 @@ async function listProjects(req, res, next) {
 }
 
 function createProjectForm(req, res) {
-  const formData = req.session.formData || { category: 'ongoing', status: 'Available', areaUnit: 'sq ft', isActive: 'on' };
+  const formData = req.session.formData || { category: 'ongoing', status: 'Available', areaUnit: 'sq ft' };
   const formError = req.session.formError;
   delete req.session.formData;
   delete req.session.formError;

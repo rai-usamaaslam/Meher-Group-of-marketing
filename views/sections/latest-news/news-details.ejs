@@ -1,7 +1,8 @@
 <main class="announcement-detail section-pad">
+  <nav class="detail-breadcrumb" aria-label="Breadcrumb"><a href="/announcements">Announcements</a><span aria-hidden="true">/</span><span aria-current="page"><%= announcement.title %></span></nav>
   <a class="announcement-back" href="/announcements">← All Announcements</a>
   <article>
-    <img class="announcement-detail-image" src="<%= announcement.image || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85' %>" alt="<%= announcement.title %>">
+    <% if (announcement.image) { %><img class="announcement-detail-image" src="<%= announcement.image %>" alt="<%= announcement.title %>" width="1800" height="1013"><% } %>
     <div class="announcement-detail-copy">
       <p class="announcement-date"><time datetime="<%= new Date(announcement.startDate).toISOString() %>"><%= new Date(announcement.startDate).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) %></time></p>
       <h1><%= announcement.title %></h1>

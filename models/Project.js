@@ -13,8 +13,6 @@ const projectSchema = new mongoose.Schema({
   shortDescription: { type: String, required: true, trim: true, maxlength: 320 },
   description: { type: String, required: true, trim: true, maxlength: 6000 },
   location: { type: String, required: true, trim: true, maxlength: 180 },
-  price: { type: String, trim: true, maxlength: 100 },
-  priceLabel: { type: String, trim: true, maxlength: 100 },
   propertyType: { type: String, trim: true, maxlength: 100 },
   bedrooms: { type: Number, min: 0, max: 100 },
   bathrooms: { type: Number, min: 0, max: 100 },
@@ -23,9 +21,6 @@ const projectSchema = new mongoose.Schema({
   featuredImage: { type: String, trim: true, default: '' },
   gallery: [{ type: String, trim: true }],
   features: [{ type: String, trim: true, maxlength: 160 }],
-  contactPhone: { type: String, trim: true, maxlength: 60 },
-  contactEmail: { type: String, trim: true, lowercase: true, maxlength: 160 },
-  isFeatured: { type: Boolean, default: false },
   isActive: { type: Boolean, default: true }
 }, { timestamps: true });
 

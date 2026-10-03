@@ -1,1 +1,22 @@
-<%- include('../project-card/project-card', { projects: projects, categoryLabels: categoryLabels }) %>
+<section class="project-categories section-pad" id="projects" aria-labelledby="projects-heading">
+  <div class="project-categories-heading">
+    <p class="eyebrow"><span></span> EXPLORE MGM</p>
+    <h2 id="projects-heading">Find your next <em>property opportunity.</em></h2>
+  </div>
+  <div class="project-category-grid">
+    <% const categories = [
+      { title: 'Ongoing Projects', href: '/projects#ongoing', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80', alt: 'Modern high-rise development viewed from below' },
+      { title: 'Completed Projects', href: '/projects#completed', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80', alt: 'Completed contemporary home with garden' },
+      { title: 'Properties for Rent', href: '/projects#rent', image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80', alt: 'Bright modern living room available for rent' },
+      { title: 'Properties for Sale', href: '/projects#sale', image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80', alt: 'Contemporary home available for sale' }
+    ]; %>
+    <% categories.forEach(function(category) { %>
+    <a class="project-category-card" href="<%= category.href %>">
+      <img src="<%= category.image %>" alt="<%= category.alt %>" loading="lazy" decoding="async" width="900" height="620">
+      <span class="project-category-overlay" aria-hidden="true"></span>
+      <span class="project-category-content"><span class="project-category-title"><%= category.title %></span><span class="project-category-arrow" aria-hidden="true">↗</span></span>
+    </a>
+    <% }); %>
+  </div>
+  <div class="project-categories-action"><a class="button button-primary" href="/projects">Explore Our Projects <span>↗</span></a></div>
+</section>

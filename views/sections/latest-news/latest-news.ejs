@@ -23,7 +23,8 @@
         <div class="latest-news-track">
           <% announcements.forEach(function(item) { %>
           <article class="latest-news-card">
-            <div class="latest-news-image">
+            <a class="latest-news-card-link" href="/announcements/<%= item.slug %>" aria-label="Read <%= item.title %>">
+              <div class="latest-news-image">
               <img
                 src="<%= item.image || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80' %>"
                 alt="<%= item.title %>"
@@ -32,28 +33,27 @@
                 height="520"
               >
 
-              <div class="latest-news-category">
+                <div class="latest-news-category">
                 <%= ({ deal: 'Property offer', announcement: 'Announcement', 'project-launch': 'Project launch' })[item.type] || 'MGM news' %>
+                </div>
+
+                <div class="latest-news-overlay" aria-hidden="true"></div>
               </div>
 
-              <div class="latest-news-overlay" aria-hidden="true"></div>
-            </div>
-
-            <div class="latest-news-content">
+              <div class="latest-news-content">
               <time class="latest-news-date" datetime="<%= new Date(item.startDate).toISOString() %>"><%= new Date(item.startDate).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' }) %></time>
 
-              <h3>
-                <a href="/announcements/<%= item.slug %>"><%= item.title %></a>
-              </h3>
+                <h3><%= item.title %></h3>
 
               <p>
                 <%= item.description.length > 140 ? item.description.slice(0, 140).trim() + '…' : item.description %>
               </p>
 
-              <a href="/announcements/<%= item.slug %>" class="latest-news-read">
+                <span class="latest-news-read">
                 Read More <span aria-hidden="true">→</span>
-              </a>
-            </div>
+                </span>
+              </div>
+            </a>
           </article>
           <% }); %>
         </div>

@@ -4,19 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#17324D">
+  <meta name="robots" content="index,follow">
   <% if (description) { %><meta name="description" content="<%= description %>"><% } %>
   <% if (typeof siteUrl !== 'undefined' && siteUrl) { %><link rel="canonical" href="<%= siteUrl %><%= page === 'home' ? '/' : (typeof currentPath !== 'undefined' ? currentPath : (typeof req !== 'undefined' && req.originalUrl ? req.originalUrl : '')) %>"><% } %>
-  <% if (page === 'home') { %>
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Meher Group of Marketing and Construction (MGM) | Real Estate & Construction Company in Islamabad">
-  <meta property="og:description" content="Meher Group of Marketing and Construction (MGM) helps clients buy, sell, invest, and develop property in Islamabad with clear, trusted guidance.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=1200&amp;q=80">
-  <meta property="og:url" content="<%= siteUrl %>/">
+  <meta property="og:title" content="<%= title %>">
+  <% if (description) { %><meta property="og:description" content="<%= description %>"><% } %>
+  <% if (typeof siteUrl !== 'undefined' && siteUrl) { %><meta property="og:url" content="<%= siteUrl %><%= currentPath || '/' %>"><% } %>
   <meta property="og:site_name" content="Meher Group of Marketing and Construction">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Meher Group of Marketing and Construction (MGM)">
-  <meta name="twitter:description" content="Real estate, property development, and construction guidance in Islamabad.">
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=1200&amp;q=80">
+  <meta name="twitter:title" content="<%= title %>">
+  <% if (description) { %><meta name="twitter:description" content="<%= description %>"><% } %>
+  <% if (page === 'home') { %>
+  <meta property="og:image" content="<%= siteUrl %>/images/hero-img.jpg">
+  <meta name="twitter:image" content="<%= siteUrl %>/images/hero-img.jpg">
   <% } %>
   <title><%= title %></title>
   <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
@@ -29,18 +30,24 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["RealEstateAgent", "Organization"],
     "name": "Meher Group of Marketing and Construction",
     "alternateName": "MGM",
     "url": "<%= siteUrl %>",
     "description": "Islamabad-based real estate, property marketing, property development, and construction company.",
-    "areaServed": "Islamabad, Pakistan",
+    "telephone": "+923194449191",
+    "email": "mahirgroupofmarketing@gmail.com",
+    "areaServed": { "@type": "City", "name": "Islamabad, Pakistan" },
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "G-08 Prime Arcade, Near Tableghi Markaz, Zamar Valley",
       "addressLocality": "Islamabad",
       "addressCountry": "PK"
     }
   }
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"Meher Group of Marketing and Construction","alternateName":"MGM","url":"<%= siteUrl %>"}
   </script>
   <% } %>
 </head>

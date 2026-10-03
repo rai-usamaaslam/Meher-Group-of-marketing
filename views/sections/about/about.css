@@ -517,18 +517,7 @@ position: relative;
   box-shadow: 0 18px 46px rgba(23, 50, 77, 0.09);
 }
 
-.about-founder-monogram{
-display: grid;
-  width: clamp(130px, 17vw, 210px);
-  aspect-ratio: 1;
-  place-items: center;
-  border: 1px solid rgba(23, 50, 77, 0.2);
-  border-radius: 50%;
-  color: var(--about-ink);
-  font: 500 clamp(56px, 7vw, 88px) / 1 var(--about-display);
-  letter-spacing: -0.07em;
-  transition: transform 350ms ease;
-}
+.founder-portrait-image img{width:100%;height:100%;object-fit:cover;object-position:center;}
 
 .about-portrait-note{
 position: absolute;
@@ -539,9 +528,6 @@ position: absolute;
   letter-spacing: 0.18em;
 }
 
-.founder-portrait:hover .about-founder-monogram{
-transform: scale(1.04);
-}
 
 .founder-portrait figcaption{
 display: flex;
@@ -958,7 +944,6 @@ justify-content: flex-start;
 animation: none;
 }
 .about-page .reveal,
-.about-founder-monogram,
 .why-mgm-card{
 transition: none;
 }

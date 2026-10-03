@@ -1,6 +1,7 @@
 <main class="project-detail">
+  <nav class="detail-breadcrumb section-pad" aria-label="Breadcrumb"><a href="/projects">Projects</a><span aria-hidden="true">/</span><span aria-current="page"><%= project.title %></span></nav>
   <section class="project-detail-hero">
-    <img src="<%= project.featuredImage || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85' %>" alt="<%= project.title %>">
+    <% if (project.featuredImage) { %><img src="<%= project.featuredImage %>" alt="<%= project.title %>" width="1800" height="1000"><% } %>
     <div></div>
     <div class="project-detail-hero-copy section-pad">
       <p class="eyebrow"><span></span> <%= categoryLabels[project.category] || project.category %></p>
@@ -22,7 +23,6 @@
     </div>
     <aside class="project-facts">
       <% if (project.status) { %><div><span>Status</span><strong><%= project.status %></strong></div><% } %>
-      <% if (project.price || project.priceLabel) { %><div><span><%= project.category === 'rental' ? 'Rent' : 'Price' %></span><strong class="project-price"><%= [project.priceLabel, project.price].filter(Boolean).join(' ') %></strong></div><% } %>
       <% if (project.propertyType) { %><div><span>Property type</span><strong><%= project.propertyType %></strong></div><% } %>
       <% if (project.area) { %><div><span>Area</span><strong><%= project.area %> <%= project.areaUnit || '' %></strong></div><% } %>
       <% if (project.bedrooms !== undefined && project.bedrooms !== null) { %><div><span>Bedrooms</span><strong><%= project.bedrooms %></strong></div><% } %>
@@ -32,15 +32,15 @@
   <% if (project.gallery && project.gallery.length) { %>
   <section class="project-gallery section-pad">
     <p class="eyebrow"><span></span> GALLERY</p>
-    <div><% project.gallery.forEach(function(image) { %><img src="<%= image %>" alt="<%= project.title %> gallery image" loading="lazy"><% }); %></div>
+    <div><% project.gallery.forEach(function(image) { %><img src="<%= image %>" alt="<%= project.title %> gallery image" loading="lazy" width="900" height="620"><% }); %></div>
   </section>
   <% } %>
   <section class="property-contact section-pad">
     <div><p class="eyebrow"><span></span> LET’S TALK</p><h2>Interested in this property?</h2><p>Ask about this listing and we’ll help you with the next step.</p></div>
     <div class="hero-actions">
       <a class="button button-primary" href="/contact">Contact Us <span>↗</span></a>
-      <a class="button button-secondary" href="/contact">WhatsApp <span>↗</span></a>
-      <a class="button button-secondary" href="<%= project.contactPhone ? 'tel:' + project.contactPhone : '/contact' %>">Call <span>↗</span></a>
+      <a class="button button-secondary" href="https://wa.me/923200098162" rel="noopener noreferrer">WhatsApp <span>↗</span></a>
+      <a class="button button-secondary" href="tel:03194449191">Call <span>↗</span></a>
     </div>
   </section>
 </main>

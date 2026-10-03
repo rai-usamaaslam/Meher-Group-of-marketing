@@ -2,10 +2,10 @@
 <section class="admin-panel">
   <div class="panel-heading"><div><p class="admin-kicker">PUBLIC LISTINGS</p><h2>Manage Projects</h2></div><a class="admin-button" href="/admin/projects/create">Add Project <span>+</span></a></div>
   <% if (projects.length) { %>
-  <div class="table-wrap"><table class="admin-table"><thead><tr><th>Image</th><th>Project</th><th>Category</th><th>Location</th><th>Status</th><th>Price</th><th>Visibility</th><th>Created</th><th>Actions</th></tr></thead><tbody>
+  <div class="table-wrap"><table class="admin-table"><thead><tr><th>Image</th><th>Project</th><th>Category</th><th>Location</th><th>Status</th><th>Visibility</th><th>Created</th><th>Actions</th></tr></thead><tbody>
     <% projects.forEach(function(project) { %><tr>
       <td><% if (project.featuredImage) { %><img class="table-image" src="<%= project.featuredImage %>" alt=""><% } else { %><span class="image-placeholder">—</span><% } %></td>
-      <td><strong><%= project.title %></strong><% if (project.isFeatured) { %><small class="featured-label">Featured</small><% } %></td><td><%= categoryLabels[project.category] || project.category %></td><td><%= project.location %></td><td><%= project.status || '—' %></td><td><%= [project.priceLabel, project.price].filter(Boolean).join(' ') || '—' %></td>
+      <td><strong><%= project.title %></strong></td><td><%= categoryLabels[project.category] || project.category %></td><td><%= project.location %></td><td><%= project.status || '—' %></td>
       <td><form action="/admin/projects/toggle/<%= project._id %>" method="post"><button class="visibility <%= project.isActive ? 'is-active' : '' %>" type="submit"><%= project.isActive ? 'Active' : 'Inactive' %></button></form></td><td><%= new Date(project.createdAt).toLocaleDateString() %></td>
       <td><div class="table-actions"><a href="/projects/<%= project.slug %>" target="_blank" rel="noopener">View</a><a href="/admin/projects/edit/<%= project._id %>">Edit</a><form action="/admin/projects/delete/<%= project._id %>" method="post" data-confirm="Are you sure you want to delete this project? This cannot be undone."><button type="submit">Delete</button></form></div></td>
     </tr><% }); %>
