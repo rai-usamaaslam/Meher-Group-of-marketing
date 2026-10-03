@@ -53,7 +53,9 @@ background:linear-gradient(90deg,rgba(5,5,5,.77),rgba(5,5,5,.39) 58%,rgba(5,5,5,
 }
 
 .hero-content{
-position:relative;z-index:1;width:min(100%,980px);padding:calc(var(--nav-h) + 75px) var(--pad) 120px;animation:rise-in .8s .08s both
+position:relative;
+z-index:1;width:min(100%,980px);
+padding:calc(var(--nav-h) + 75px) var(--pad) 120px;animation:rise-in .8s .08s both
 }
 
 .hero h1{

@@ -32,7 +32,13 @@ router.get('/', async (req, res, next) => {
       Testimonial.find({ isActive: true }).sort({ date: -1 }).lean()
     ]);
     return res.render('home', Object.assign({
-      title: 'MGM | Meher Group of Marketing', page: 'home', projects, announcements, testimonials, categoryLabels
+      title: 'Meher Group of Marketing and Construction (MGM) | Real Estate & Construction Company in Islamabad',
+      page: 'home',
+      projects,
+      announcements,
+      testimonials,
+      categoryLabels,
+      description: 'Meher Group of Marketing and Construction (MGM) helps clients buy, sell, invest, and develop property in Islamabad with clear, trusted guidance.'
     }, sharedContent()));
   } catch (error) { return next(error); }
 });

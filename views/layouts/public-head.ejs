@@ -5,11 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#17324D">
   <% if (description) { %><meta name="description" content="<%= description %>"><% } %>
+  <% if (typeof siteUrl !== 'undefined' && siteUrl) { %><link rel="canonical" href="<%= siteUrl %><%= page === 'home' ? '/' : (typeof currentPath !== 'undefined' ? currentPath : (typeof req !== 'undefined' && req.originalUrl ? req.originalUrl : '')) %>"><% } %>
   <% if (page === 'home') { %>
   <meta property="og:type" content="website">
-  <meta property="og:title" content="MGM | Meher Group of Marketing">
-  <meta property="og:description" content="Building trust. Creating opportunities.">
+  <meta property="og:title" content="Meher Group of Marketing and Construction (MGM) | Real Estate & Construction Company in Islamabad">
+  <meta property="og:description" content="Meher Group of Marketing and Construction (MGM) helps clients buy, sell, invest, and develop property in Islamabad with clear, trusted guidance.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=1200&amp;q=80">
+  <meta property="og:url" content="<%= siteUrl %>/">
+  <meta property="og:site_name" content="Meher Group of Marketing and Construction">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Meher Group of Marketing and Construction (MGM)">
+  <meta name="twitter:description" content="Real estate, property development, and construction guidance in Islamabad.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=1200&amp;q=80">
   <% } %>
   <title><%= title %></title>
   <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
@@ -17,9 +24,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <% (cssSections || []).forEach(function(section) { %><link rel="stylesheet" href="/section-assets/<%= section %>/<%= section %>.css"><% }); %>
-  <% if (typeof includeSwiper !== 'undefined' && includeSwiper) { %>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-  <% } %>
   <% (jsSections || []).forEach(function(section) { %><script src="/section-assets/<%= section %>/<%= section %>.js" defer></script><% }); %>
+  <% if (page === 'home') { %>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Meher Group of Marketing and Construction",
+    "alternateName": "MGM",
+    "url": "<%= siteUrl %>",
+    "description": "Islamabad-based real estate, property marketing, property development, and construction company.",
+    "areaServed": "Islamabad, Pakistan",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Islamabad",
+      "addressCountry": "PK"
+    }
+  }
+  </script>
+  <% } %>
 </head>

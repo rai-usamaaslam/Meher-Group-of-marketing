@@ -47,6 +47,7 @@ app.use(function(req, res, next) {
     res.locals.flash = req.session && req.session.flash;
     if (req.session) delete req.session.flash;
     res.locals.year = new Date().getFullYear();
+    res.locals.siteUrl = process.env.BASE_URL || `${req.protocol}://${req.get('host')}`;
     next();
 });
 

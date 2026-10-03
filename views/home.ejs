@@ -1,8 +1,8 @@
 <%- include('./layouts/public-head', {
   title: title,
   page: page,
-  description: 'Meher Group of Marketing helps you buy, sell, and explore property with clear, friendly guidance.',
-  includeSwiper: true,
+  description: (typeof description !== 'undefined' && description) ? description : 'Meher Group of Marketing and Construction (MGM) helps clients buy, sell, invest, and develop property in Islamabad with clear, trusted guidance.',
+  siteUrl: typeof siteUrl !== 'undefined' ? siteUrl : '',
   cssSections: ['site-shell', 'navbar', 'hero', 'about', 'stats', 'services', 'projects', 'project-card', 'testimonials', 'latest-news', 'footer'],
   jsSections: ['navbar', 'site-shell', 'stats', 'services', 'projects', 'project-card', 'testimonials', 'latest-news']
 }) %>
@@ -13,7 +13,7 @@
     <%- include('./sections/about/about-preview') %>
     <%- include('./sections/stats/stats') %>
     <%- include('./sections/services/services') %>
-    <%- include('./sections/projects/projects') %>
+    <%- include('./sections/project-card/project-card', { projects: projects, categoryLabels: categoryLabels }) %>
     <%- include('./sections/testimonials/testimonials') %>
     <%- include('./sections/latest-news/latest-news') %>
   </main>

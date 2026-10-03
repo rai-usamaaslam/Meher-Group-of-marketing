@@ -22,7 +22,7 @@
     <% if (projects.length) { %>
     <div class="projects-page-grid">
       <% projects.forEach(function(project) { %>
-      <%- include('../project-card/project-card', { project: project, categoryLabels: categoryLabels, cardVariant: 'projects-page' }) %>
+      <%- include('../project-card/project-card', { project: project, categoryLabels: categoryLabels, cardVariant: 'projects-page', renderProjectCard: true }) %>
       <% }); %>
     </div>
     <% } else { %>
