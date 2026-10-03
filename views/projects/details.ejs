@@ -1,7 +1,13 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#17324D"><meta name="description" content="<%= project.shortDescription %>"><title><%= title %></title><link rel="icon" href="/images/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/approachable.css"><script src="/js/main.js" defer></script>  <link rel="stylesheet" href="/css/typography.css">
-</head><body><%- include('../partials/navbar') %><main class="project-detail">
-<section class="project-detail-hero"><img src="<%= project.featuredImage || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85' %>" alt="<%= project.title %>"><div></div><div class="project-detail-hero-copy section-pad"><p class="eyebrow"><span></span> <%= categoryLabels[project.category] || project.category %></p><h1><%= project.title %></h1><p><%= project.location %></p></div></section>
-<section class="project-detail-content section-pad"><div class="project-detail-main"><p class="eyebrow"><span></span> PROPERTY OVERVIEW</p><h2><%= project.shortDescription %></h2><p class="project-long-description"><%= project.description %></p><% if (project.features && project.features.length) { %><section class="project-features"><h3>Features</h3><ul><% project.features.forEach(function(feature) { %><li><span>✓</span><%= feature %></li><% }); %></ul></section><% } %></div><aside class="project-facts"><% if (project.status) { %><div><span>Status</span><strong><%= project.status %></strong></div><% } %><% if (project.price || project.priceLabel) { %><div><span><%= project.category === 'rental' ? 'Rent' : 'Price' %></span><strong class="project-price"><%= [project.priceLabel, project.price].filter(Boolean).join(' ') %></strong></div><% } %><% if (project.propertyType) { %><div><span>Property type</span><strong><%= project.propertyType %></strong></div><% } %><% if (project.area) { %><div><span>Area</span><strong><%= project.area %> <%= project.areaUnit || '' %></strong></div><% } %><% if (project.bedrooms !== undefined && project.bedrooms !== null) { %><div><span>Bedrooms</span><strong><%= project.bedrooms %></strong></div><% } %><% if (project.bathrooms !== undefined && project.bathrooms !== null) { %><div><span>Bathrooms</span><strong><%= project.bathrooms %></strong></div><% } %></aside></section>
-<% if (project.gallery && project.gallery.length) { %><section class="project-gallery section-pad"><p class="eyebrow"><span></span> GALLERY</p><div><% project.gallery.forEach(function(image) { %><img src="<%= image %>" alt="<%= project.title %> gallery image" loading="lazy"><% }); %></div></section><% } %>
-<section class="property-contact section-pad"><div><p class="eyebrow"><span></span> LET’S TALK</p><h2>Interested in this property?</h2><p>Ask about this listing and we’ll help you with the next step.</p></div><div class="hero-actions"><a class="button button-primary" href="/contact">Contact Us <span>↗</span></a><a class="button button-secondary" href="/contact">WhatsApp <span>↗</span></a><a class="button button-secondary" href="<%= project.contactPhone ? 'tel:' + project.contactPhone : '/contact' %>">Call <span>↗</span></a></div></section>
-</main><%- include('../partials/footer') %></body></html>
+<%- include('../layouts/public-head', {
+  title: title,
+  page: page,
+  description: project.shortDescription,
+  cssSections: ['site-shell', 'navbar', 'projects', 'contact', 'footer'],
+  jsSections: ['navbar', 'site-shell']
+}) %>
+<body>
+  <%- include('../sections/navbar/navbar') %>
+  <%- include('../sections/projects/project-details') %>
+  <%- include('../sections/footer/footer') %>
+</body>
+</html>

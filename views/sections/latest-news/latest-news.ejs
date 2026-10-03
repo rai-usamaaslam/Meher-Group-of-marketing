@@ -1,0 +1,48 @@
+<section class="announcement-preview section-news section-pad" aria-labelledby="announcement-preview-title">
+  <div class="announcement-heading">
+    <div>
+      <p class="eyebrow"><span></span> MGM UPDATES</p>
+      <h2 id="announcement-preview-title">Latest News</h2>
+      <p class="announcement-intro">Company news, project updates, and opportunities from Meher Group of Marketing.</p>
+    </div>
+    <% if (announcements && announcements.length > 1) { %>
+    <div class="news-slider-controls" aria-label="News carousel controls">
+      <button class="news-slider-previous" type="button" aria-label="Previous news">←</button>
+      <button class="news-slider-next" type="button" aria-label="Next news">→</button>
+    </div>
+    <% } %>
+  </div>
+  <% if (announcements && announcements.length) { %>
+  <div class="swiper news-slider" id="news-carousel" role="region" aria-label="Latest news">
+    <div class="swiper-wrapper">
+      <% announcements.forEach(function(item) { %>
+      <article class="swiper-slide news-slide">
+        <div class="news-card">
+          <img
+            class="news-image"
+            src="<%= item.image || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80' %>"
+            alt="<%= item.title %>"
+            loading="lazy"
+            width="760"
+            height="520"
+          >
+          <div class="news-overlay">
+            <div class="news-overlay-content">
+              <span class="news-category"><%= ({ deal: 'Property offer', announcement: 'Announcement', 'project-launch': 'Project launch' })[item.type] || 'MGM news' %></span>
+              <h3>
+                <a href="/announcements/<%= item.slug %>"><%= item.title %></a>
+              </h3>
+              <time class="news-date" datetime="<%= new Date(item.startDate).toISOString() %>"><%= new Date(item.startDate).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' }) %></time>
+            </div>
+          </div>
+        </div>
+      </article>
+      <% }); %>
+    </div>
+    <% if (announcements.length > 1) { %><div class="news-carousel-pagination" aria-label="Choose a news slide"></div><% } %>
+  </div>
+  <% } else { %>
+  <p class="announcement-empty">There are no announcements to share right now. Please check back soon.</p>
+  <% } %>
+  <a class="announcement-view-all" href="/announcements">All News <span aria-hidden="true">→</span></a>
+</section>

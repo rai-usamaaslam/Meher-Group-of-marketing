@@ -1,0 +1,47 @@
+:root {
+  --display: 'Cormorant Garamond', Georgia, serif;
+  --body: 'Manrope', Arial, sans-serif;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--body);
+}
+
+h1,
+h2,
+h3,
+.admin-header h1,
+.panel-heading h2,
+.admin-panel h2,
+.admin-panel h3 {
+  font-family: var(--display);
+  font-optical-sizing: auto;
+  font-weight: 600;
+  letter-spacing: -.025em;
+  text-transform: none;
+}
+
+.admin-header h1,
+.panel-heading h2,
+.admin-panel h2,
+.admin-panel h3 {
+  font-weight: 600;
+}
+
+.admin-main h1:not(.no-type) {
+  font-size: clamp(32px, 3vw, 40px);
+  line-height: 1.1;
+}
+
+.admin-main h2:not(.no-type) {
+  font-size: 26px;
+}
+
+.admin-main h3:not(.no-type),
+.login-card h1 {
+  font-size: 24px;
+}

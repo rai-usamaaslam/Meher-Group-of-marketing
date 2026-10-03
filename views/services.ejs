@@ -1,2 +1,16 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#17324D"><meta name="description" content="Explore property marketing, consultancy, project marketing, and investment guidance from MGM."><title><%= title %></title><link rel="icon" href="/images/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/approachable.css"><link rel="stylesheet" href="/css/services-cleanup.css"><script src="/js/main.js" defer></script>  <link rel="stylesheet" href="/css/typography.css">
-</head><body><%- include('./partials/navbar') %><main><%- include('./partials/services') %><%- include('./partials/why-services') %></main><%- include('./partials/footer') %></body></html>
+<%- include('./layouts/public-head', {
+  title: title,
+  page: page,
+  description: 'Explore property marketing, consultancy, project marketing, and investment guidance from MGM.',
+  cssSections: ['site-shell', 'navbar', 'services', 'footer'],
+  jsSections: ['navbar', 'site-shell', 'services']
+}) %>
+<body>
+  <%- include('./sections/navbar/navbar') %>
+  <main>
+    <%- include('./sections/services/services') %>
+    <%- include('./sections/services/why-services') %>
+  </main>
+  <%- include('./sections/footer/footer') %>
+</body>
+</html>

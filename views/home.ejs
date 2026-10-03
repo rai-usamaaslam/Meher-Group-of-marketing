@@ -1,0 +1,22 @@
+<%- include('./layouts/public-head', {
+  title: title,
+  page: page,
+  description: 'Meher Group of Marketing helps you buy, sell, and explore property with clear, friendly guidance.',
+  includeSwiper: true,
+  cssSections: ['site-shell', 'navbar', 'hero', 'about', 'stats', 'services', 'projects', 'project-card', 'testimonials', 'latest-news', 'footer'],
+  jsSections: ['navbar', 'site-shell', 'stats', 'services', 'projects', 'project-card', 'testimonials', 'latest-news']
+}) %>
+<body>
+  <%- include('./sections/navbar/navbar') %>
+  <main>
+    <%- include('./sections/hero/hero') %>
+    <%- include('./sections/about/about-preview') %>
+    <%- include('./sections/stats/stats') %>
+    <%- include('./sections/services/services') %>
+    <%- include('./sections/projects/projects') %>
+    <%- include('./sections/testimonials/testimonials') %>
+    <%- include('./sections/latest-news/latest-news') %>
+  </main>
+  <%- include('./sections/footer/footer') %>
+</body>
+</html>

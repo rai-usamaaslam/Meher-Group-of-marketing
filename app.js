@@ -30,6 +30,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+const sectionAssets = new Set([
+    'site-shell', 'navbar', 'hero', 'about', 'stats', 'services', 'projects',
+    'project-card', 'gallery', 'testimonials', 'latest-news', 'contact', 'footer', 'team'
+]);
+app.get('/section-assets/:section/:asset', (req, res, next) => {
+    const { section, asset } = req.params;
+    if (!sectionAssets.has(section) || ![`${section}.css`, `${section}.js`].includes(asset)) return next();
+    res.sendFile(path.join(__dirname, 'views', 'sections', section, asset), (error) => {
+        if (error) next(error);
+    });
+});
+
 app.use(function(req, res, next) {
     res.locals.adminName = req.session && req.session.adminName;
     res.locals.flash = req.session && req.session.flash;

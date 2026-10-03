@@ -1,0 +1,33 @@
+<main class="projects-page">
+  <section class="projects-page-hero section-pad" aria-labelledby="projects-page-title">
+    <p class="eyebrow"><span></span> MGM PROPERTIES</p>
+    <h1 id="projects-page-title">Explore our <em>projects.</em></h1>
+    <p>Browse current developments, completed projects, and available properties in one place.</p>
+  </section>
+  <% const sections = [
+    { key: 'ongoing', title: 'Ongoing Projects', description: 'Developments currently moving forward.' },
+    { key: 'completed', title: 'Completed Projects', description: 'Projects delivered with care and attention.' },
+    { key: 'sale', title: 'Properties for Sale', description: 'Available properties and investment opportunities.' },
+    { key: 'rental', anchor: 'rent', title: 'Properties for Rent', description: 'Rental options currently available.' }
+  ]; %>
+  <% sections.forEach(function(section) { const projects = projectGroups[section.key]; %>
+  <section class="projects-page-section section-pad" id="<%= section.anchor || section.key %>">
+    <div class="projects-page-heading">
+      <div>
+        <p class="eyebrow"><span></span> MGM PROPERTIES</p>
+        <h2><%= section.title %></h2>
+      </div>
+      <p><%= section.description %></p>
+    </div>
+    <% if (projects.length) { %>
+    <div class="projects-page-grid">
+      <% projects.forEach(function(project) { %>
+      <%- include('../project-card/project-card', { project: project, categoryLabels: categoryLabels, cardVariant: 'projects-page' }) %>
+      <% }); %>
+    </div>
+    <% } else { %>
+    <p class="projects-page-empty">No <%= section.title.toLowerCase() %> are available right now.</p>
+    <% } %>
+  </section>
+  <% }); %>
+</main>

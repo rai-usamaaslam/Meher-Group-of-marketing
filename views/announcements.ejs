@@ -1,50 +1,13 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#17324D">
-  <title><%= title %></title>
-  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/approachable.css">
-  <link rel="stylesheet" href="/css/typography.css">
-  <link rel="stylesheet" href="/css/announcements.css">
-  <script src="/js/main.js" defer></script>
-</head>
+<%- include('./layouts/public-head', {
+  title: title,
+  page: page,
+  description: 'Company news, project updates, and opportunities from Meher Group of Marketing.',
+  cssSections: ['site-shell', 'navbar', 'latest-news', 'footer'],
+  jsSections: ['navbar', 'site-shell']
+}) %>
 <body>
-  <%- include('./partials/navbar') %>
-  <main class="announcements-page">
-    <header class="announcements-page-heading section-pad">
-      <p class="eyebrow"><span></span> MGM UPDATES</p>
-      <h1>Latest Announcements</h1>
-      <p>Company news, project updates, and opportunities from Meher Group of Marketing.</p>
-    </header>
-    <section class="announcements-page-list section-pad" aria-label="All published announcements">
-      <% if (announcements.length) { %>
-      <div class="announcement-grid">
-        <% announcements.forEach(function(item) { %>
-        <article class="announcement-card">
-          <a class="announcement-card-image" href="/announcements/<%= item.slug %>" aria-label="Read <%= item.title %>">
-            <img src="<%= item.image || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80' %>" alt="<%= item.title %>" loading="lazy">
-          </a>
-          <div class="announcement-card-copy">
-            <p class="announcement-date"><time datetime="<%= new Date(item.startDate).toISOString() %>"><%= new Date(item.startDate).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) %></time></p>
-            <h2><a href="/announcements/<%= item.slug %>"><%= item.title %></a></h2>
-            <p class="announcement-excerpt"><%= item.description.length > 180 ? item.description.slice(0, 180).trim() + '…' : item.description %></p>
-            <a class="announcement-read-more" href="/announcements/<%= item.slug %>">Read More <span aria-hidden="true">→</span></a>
-          </div>
-        </article>
-        <% }); %>
-      </div>
-      <% } else { %>
-      <p class="announcement-empty">There are no announcements to share right now. Please check back soon.</p>
-      <% } %>
-    </section>
-  </main>
-  <%- include('./partials/footer') %>
+  <%- include('./sections/navbar/navbar') %>
+  <%- include('./sections/latest-news/news-list') %>
+  <%- include('./sections/footer/footer') %>
 </body>
 </html>

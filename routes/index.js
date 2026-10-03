@@ -28,10 +28,10 @@ router.get('/', async (req, res, next) => {
   try {
     const [projects, announcements, testimonials] = await Promise.all([
       Project.find({ isActive: true }).sort({ isFeatured: -1, createdAt: -1 }).lean(),
-      Announcement.find({ active: true }).sort({ startDate: -1, createdAt: -1 }).limit(3).lean(),
+      Announcement.find({ active: true }).sort({ startDate: -1, createdAt: -1 }).limit(6).lean(),
       Testimonial.find({ isActive: true }).sort({ date: -1 }).lean()
     ]);
-    return res.render('index', Object.assign({
+    return res.render('home', Object.assign({
       title: 'MGM | Meher Group of Marketing', page: 'home', projects, announcements, testimonials, categoryLabels
     }, sharedContent()));
   } catch (error) { return next(error); }

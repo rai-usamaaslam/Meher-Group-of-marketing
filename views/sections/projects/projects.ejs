@@ -1,0 +1,24 @@
+<section class="home-projects section-pad" id="projects">
+  <div class="home-section-heading">
+    <div>
+      <p class="eyebrow"><span></span> PROPERTY AND DEVELOPMENT</p>
+      <h2>Explore Our <em>Projects</em></h2>
+    </div>
+    <% if (projects.length > 1) { %>
+    <div class="slider-controls">
+      <button type="button" data-scroll-carousel="projects-carousel" data-scroll-direction="previous" aria-label="Previous projects">←</button>
+      <button type="button" data-scroll-carousel="projects-carousel" data-scroll-direction="next" aria-label="Next projects">→</button>
+    </div>
+    <% } %>
+  </div>
+  <% if (projects.length) { %>
+  <div class="home-card-carousel" id="projects-carousel" role="region" aria-label="Featured projects" tabindex="0">
+    <% projects.forEach(function(project) { %>
+    <%- include('../project-card/project-card', { project: project, categoryLabels: categoryLabels, cardVariant: 'home-project' }) %>
+    <% }); %>
+  </div>
+  <% } else { %>
+  <p class="home-empty">Projects will appear here as they are published.</p>
+  <% } %>
+  <a class="home-all-projects" href="/projects">View all projects <span>↗</span></a>
+</section>
