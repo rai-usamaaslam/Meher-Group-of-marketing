@@ -12,7 +12,7 @@ object-fit:cover;object-position:center 54%
 }
 
 .subpage-hero-shade{
-background:linear-gradient(90deg,rgba(5,5,5,.78),rgba(5,5,5,.31)),linear-gradient(0deg,rgba(5,5,5,.35),transparent 50%)
+background:linear-gradient(90deg,rgba(17,17,17,.78),rgba(17,17,17,.31)),linear-gradient(0deg,rgba(17,17,17,.35),transparent 50%)
 }
 
 .subpage-hero-copy{
@@ -49,7 +49,7 @@ object-fit:cover;object-position:center 55%;animation:hero-in 1.2s ease-out both
 }
 
 .hero-shade{
-background:linear-gradient(90deg,rgba(5,5,5,.77),rgba(5,5,5,.39) 58%,rgba(5,5,5,.12)),linear-gradient(0deg,rgba(5,5,5,.45),transparent 42%)
+background:linear-gradient(90deg,rgba(17,17,17,.77),rgba(17,17,17,.39) 58%,rgba(17,17,17,.12)),linear-gradient(0deg,rgba(17,17,17,.45),transparent 42%)
 }
 
 .hero-content{
@@ -125,7 +125,7 @@ object-position:center 57%;filter:brightness(1.08) saturate(.82)
 }
 
 .hero-shade{
-background:linear-gradient(90deg,rgba(248,246,241,.74),rgba(248,246,241,.48) 47%,rgba(248,246,241,.08) 100%),linear-gradient(0deg,rgba(248,246,241,.12),transparent 40%)
+background:linear-gradient(90deg,rgba(255,255,255,.74),rgba(255,255,255,.48) 47%,rgba(255,255,255,.08) 100%),linear-gradient(0deg,rgba(255,255,255,.12),transparent 40%)
 }
 
 .hero-content{
@@ -141,7 +141,7 @@ color:var(--blue);font-style:normal;font-weight:600
 }
 
 .hero-copy{
-max-width:520px;color:#465760;font-size:clamp(16px,1.4vw,18px);line-height:1.75
+max-width:520px;color:#777777;font-size:clamp(16px,1.4vw,18px);line-height:1.75
 }
 
 .hero-actions{
@@ -165,7 +165,7 @@ color:var(--terracotta)
 }
 
 .hero-side-note{
-color:rgba(23,50,77,.72);font-size:9px;letter-spacing:.08em
+color:rgba(17,17,17,.72);font-size:9px;letter-spacing:.08em
 }
 
 @media(max-width:760px){
@@ -176,7 +176,7 @@ min-height:92svh
 object-position:62% center
 }
 .hero-shade{
-background:linear-gradient(90deg,rgba(248,246,241,.78),rgba(248,246,241,.54) 65%,rgba(248,246,241,.14)),linear-gradient(0deg,rgba(248,246,241,.18),transparent 48%)
+background:linear-gradient(90deg,rgba(255,255,255,.78),rgba(255,255,255,.54) 65%,rgba(255,255,255,.14)),linear-gradient(0deg,rgba(255,255,255,.18),transparent 48%)
 }
 .hero-content{
 padding-top:120px;padding-bottom:145px

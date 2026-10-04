@@ -4,8 +4,8 @@
 
 .site-footer {
   width: 100%;
-  background: var(--navy, #101820);
-  color: #fff;
+  background: var(--navy, #111111);
+  color: #FFFFFF;
   padding: 58px var(--pad, 6vw) 20px;
   box-sizing: border-box;
 }
@@ -48,14 +48,14 @@
   align-items: center;
   gap: 14px;
 
-  color: #fff;
+  color: #FFFFFF;
   text-decoration: none;
 }
 
 .footer-monogram {
   flex-shrink: 0;
 
-  color: #fff;
+  color: #FFFFFF;
 
   font-family: var(--display, Arial, sans-serif);
   font-size: 25px;
@@ -67,7 +67,7 @@
 .footer-brand-name {
   display: block;
 
-  color: #fff;
+  color: #FFFFFF;
 
   font-family: var(--display, Arial, sans-serif);
   font-size: 10px;
@@ -78,7 +78,7 @@
 
 .footer-wordmark:hover .footer-monogram,
 .footer-wordmark:hover .footer-brand-name {
-  color: #f1b49f;
+  color: #B08D57;
 }
 
 .footer-promise {
@@ -113,9 +113,9 @@
   width: 42px;
   height: 42px;
 
-  color: #f1b49f;
+  color: #B08D57;
 
-  border: 1px solid rgba(241, 180, 159, 0.45);
+  border: 1px solid rgba(176, 141, 87, 0.45);
   border-radius: 50%;
 
   font-family: Arial, sans-serif;
@@ -150,7 +150,7 @@
 .footer-heading {
   margin: 0 0 6px;
 
-  color: #f1b49f;
+  color: #B08D57;
 
   font-size: 9px;
   font-weight: 700;
@@ -177,7 +177,7 @@
 }
 
 .footer-column a:hover {
-  color: #f1b49f;
+  color: #B08D57;
 }
 
 .footer-address {

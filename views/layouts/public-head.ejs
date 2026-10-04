@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#17324D">
+  <meta name="theme-color" content="#111111">
   <meta name="robots" content="index,follow">
   <% if (description) { %><meta name="description" content="<%= description %>"><% } %>
   <% if (typeof siteUrl !== 'undefined' && siteUrl) { %><link rel="canonical" href="<%= siteUrl %><%= page === 'home' ? '/' : (typeof currentPath !== 'undefined' ? currentPath : (typeof req !== 'undefined' && req.originalUrl ? req.originalUrl : '')) %>"><% } %>
