@@ -685,3 +685,23 @@
   }
 
 }
+
+@media(max-width:600px){
+  .project-card,
+  .project-card .project-content,
+  .project-card .project-meta,
+  .project-card .project-actions{
+    min-width:0;
+  }
+
+  .project-card .project-title,
+  .project-card .project-location,
+  .project-card .project-description{
+    overflow-wrap:anywhere;
+  }
+
+  .project-card .project-actions,
+  .project-card .project-actions .button{
+    max-width:100%;
+  }
+}

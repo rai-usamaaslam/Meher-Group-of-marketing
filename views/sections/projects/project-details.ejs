@@ -1,7 +1,7 @@
 <main class="project-detail">
   <nav class="detail-breadcrumb section-pad" aria-label="Breadcrumb"><a href="/projects">Projects</a><span aria-hidden="true">/</span><span aria-current="page"><%= project.title %></span></nav>
   <section class="project-detail-hero">
-    <% if (project.featuredImage) { %><img src="<%= project.featuredImage %>" alt="<%= project.title %>" width="1800" height="1000"><% } %>
+    <% if (project.featuredImage) { %><img src="<%= project.featuredImage %>" alt="<%= project.title %>" width="1800" height="900"><% } %>
     <div></div>
     <div class="project-detail-hero-copy section-pad">
       <p class="eyebrow"><span></span> <%= categoryLabels[project.category] || project.category %></p>

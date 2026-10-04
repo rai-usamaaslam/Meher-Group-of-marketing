@@ -14,17 +14,24 @@ function validate(body) {
   if (!emailPattern.test(values.email)) errors.email = 'Please enter a valid email address.';
   if (!phonePattern.test(values.phone)) errors.phone = 'Please enter a valid phone number.';
   if (!subjects.includes(values.subject)) errors.subject = 'Please select an inquiry type.';
-  if (values.message.length < 10) errors.message = 'Please enter a message of at least 10 characters.';
+  if (!values.message) errors.message = 'Please enter a message.';
   return { values, errors };
 }
 
 async function submitInquiry(req, res, next) {
   try {
     const { values, errors } = validate(req.body);
-    if (Object.keys(errors).length) return res.status(422).json({ ok: false, errors });
+
+    if (Object.keys(errors).length) {
+      return res.redirect('/contact?error=1');
+    }
+
     await Inquiry.create(values);
-    return res.status(201).json({ ok: true, message: 'Thanks — your message has been received. We’ll be in touch soon.' });
-  } catch (error) { return next(error); }
+
+    return res.redirect('/contact?success=1');
+  } catch (error) {
+    return next(error);
+  }
 }
 
 async function listInquiries(req, res, next) {

@@ -383,6 +383,48 @@ main h3:not(.no-type){
   }
 }
 
+/* Responsive layout safety: allows content-bearing grid and flex children to shrink. */
+html,
+body{
+  max-width:100%;
+  overflow-x:clip;
+}
+
+main,
+section,
+[class*="container"],
+[class*="content"],
+[class*="grid"],
+[class*="card"]{
+  min-width:0;
+}
+
+img{
+  max-width:100%;
+}
+
+input,
+textarea,
+select,
+button{
+  max-width:100%;
+}
+
+@media(max-width:600px){
+  :root{
+    --pad:clamp(18px,5vw,26px);
+  }
+
+  .hero-actions{
+    width:100%;
+    flex-wrap:wrap;
+  }
+
+  .button{
+    max-width:100%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce){
   .feature-icon{
     transition:none;

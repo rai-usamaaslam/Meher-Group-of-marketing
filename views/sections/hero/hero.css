@@ -228,3 +228,27 @@ font-size: clamp(64px, 6vw, 72px);
 font-size: clamp(46px, 12vw, 60px);
 }
 }
+
+@media(max-width:600px){
+  .hero,
+  .subpage-hero{
+    min-height:clamp(540px,92svh,680px);
+  }
+
+  .hero-content,
+  .subpage-hero-copy{
+    width:100%;
+    padding-right:var(--pad);
+    padding-left:var(--pad);
+  }
+
+  .hero-copy,
+  .subpage-hero-copy>p:not(.eyebrow){
+    max-width:34rem;
+  }
+
+  .hero-actions .button,
+  .subpage-hero .button{
+    width:min(100%,320px);
+  }
+}

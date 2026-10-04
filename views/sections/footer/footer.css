@@ -346,3 +346,17 @@
   }
 
 }
+
+@media(max-width:600px){
+  .footer-information,
+  .footer-column,
+  .footer-bottom{
+    min-width:0;
+  }
+
+  .footer-address,
+  .footer-column a,
+  .footer-bottom span{
+    overflow-wrap:anywhere;
+  }
+}
