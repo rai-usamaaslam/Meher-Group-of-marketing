@@ -1,318 +1,361 @@
-.projects-section {
-  width: 100%;
-  padding: clamp(18px, 2vw, 24px) 0;
-  overflow: hidden;
-  background: #fff;
-}
-
-.projects-container {
-  width: min(90%, 1350px);
-  margin: 0 auto;
-}
-
-.projects-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 10px;
-}
-
-.projects-title {
-  position: relative;
-}
-
-.projects-label {
-  display: block;
-  margin-bottom: 6px;
-  color: #b08d57;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-}
-
-.projects-section .projects-title h2 {
-  margin: 0;
-  color: #111;
-  font: 600 clamp(32px, 3.6vw, 40px)/1.1 var(--display, 'Cormorant Garamond', Georgia, serif);
-  letter-spacing: -.025em;
-}
-
-.projects-line {
-  width: 54px;
-  height: 2px;
-  margin-top: 9px;
-  background: #b08d57;
-}
-
-.projects-view-all {
-  display: inline-flex;
-  flex: 0 0 auto;
-  align-items: center;
-  gap: 9px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid #111;
-  color: #111;
-  font-size: 12px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: color .2s ease, border-color .2s ease;
-}
-
-.projects-view-all span {
-  font-size: 17px;
-  transition: transform .2s ease;
-}
-
-.projects-view-all:hover {
-  border-color: #b08d57;
-  color: #b08d57;
-}
-
-.projects-view-all:hover span {
-  transform: translateX(3px);
-}
-
-.projects-slider-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.projects-slider {
-  min-width: 0;
-  flex: 1;
-  overflow: hidden;
-}
-
-.projects-track {
-  display: flex;
-  align-items: stretch;
-  gap: 25px;
-  transition: transform .55s cubic-bezier(.4, 0, .2, 1);
-  will-change: transform;
-}
+/* =========================================================
+   MGM PROJECT CARD
+   ========================================================= */
 
 .project-card {
+  position: relative;
   display: flex;
-  min-width: 0;
-  flex: 0 0 calc((100% - 50px) / 3);
   flex-direction: column;
+  width: 100%;
+  min-width: 0;
   overflow: hidden;
+  background: #ffffff;
   border: 1px solid #e7e7e7;
-  background: #fff;
-  transition: transform .3s ease, box-shadow .3s ease;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(17, 17, 17, 0.08);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .project-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 34px rgba(17, 17, 17, .1);
+  box-shadow: 0 14px 35px rgba(17, 17, 17, 0.14);
 }
+
+
+/* =========================================================
+   PROJECT IMAGE
+   ========================================================= */
 
 .project-card .project-image {
   position: relative;
+  width: 100%;
   height: 165px;
+  min-height: 165px;
+  max-height: 165px;
   flex: 0 0 165px;
   overflow: hidden;
-  background: #eee;
-}
-
-.project-card .project-image img,
-.project-card .project-image-placeholder {
-  display: block;
-  width: 100%;
-  height: 100%;
+  background: #eeeeee;
 }
 
 .project-card .project-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: center;
-  transition: transform .6s ease;
+  transition: transform 0.5s ease;
 }
 
 .project-card:hover .project-image img {
-  transform: scale(1.045);
+  transform: scale(1.04);
 }
 
+
+/* =========================================================
+   IMAGE PLACEHOLDER
+   ========================================================= */
+
 .project-card .project-image-placeholder {
-  display: grid;
-  place-items: center;
-  background: linear-gradient(135deg, #e9e5df, #cfc8bd);
-  color: rgba(17, 17, 17, .45);
-  font: 600 32px/1 var(--display, 'Cormorant Garamond', Georgia, serif);
-  letter-spacing: .12em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: #eeeeee;
+  color: #b08d57;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 3px;
 }
+
+
+/* =========================================================
+   IMAGE OVERLAY
+   ========================================================= */
 
 .project-card .project-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, .05) 20%, rgba(0, 0, 0, .52) 100%);
   pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(17, 17, 17, 0.35),
+    transparent 45%,
+    rgba(17, 17, 17, 0.08)
+  );
+  z-index: 2;
 }
+
+
+/* =========================================================
+   AVAILABLE / STATUS BADGE
+   IMPORTANT: THIS IS THE TOP "AVAILABLE" TEXT
+   ========================================================= */
 
 .project-card .project-status {
-  position: absolute;
-  z-index: 2;
-  top: 14px;
-  left: 14px;
-  max-width: calc(100% - 100px);
-  overflow: hidden;
-  padding: 6px 10px;
-  background: #b08d57;
-  color: #fff;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-overflow: ellipsis;
+  position: absolute !important;
+
+  top: 14px !important;
+  left: 14px !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: max-content !important;
+  height: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: calc(100% - 28px) !important;
+  max-height: 30px !important;
+
+  margin: 0 !important;
+  padding: 7px 13px !important;
+
+  box-sizing: border-box !important;
+
+  background: #b08d57 !important;
+  color: #ffffff !important;
+
+  border: 0 !important;
+  border-radius: 4px !important;
+
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.8px !important;
+
   text-transform: uppercase;
-  white-space: nowrap;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+
+  z-index: 10 !important;
 }
 
-.project-card .project-favorite,
-.project-card .project-share {
-  position: absolute;
-  z-index: 2;
-  top: 12px;
-  display: grid;
-  width: 36px;
-  height: 36px;
-  place-items: center;
-  padding: 0;
-  border: 1px solid rgba(255, 255, 255, .75);
-  background: rgba(17, 17, 17, .36);
-  color: #fff;
-  cursor: pointer;
-  backdrop-filter: blur(5px);
-  transition: color .2s ease, background .2s ease, border-color .2s ease;
-}
+
+/* =========================================================
+   FAVORITE BUTTON
+   ========================================================= */
 
 .project-card .project-favorite {
-  right: 56px;
-  font-size: 21px;
+  position: absolute;
+  top: 12px;
+  right: 48px;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+
+  background: rgba(17, 17, 17, 0.65);
+  color: #ffffff;
+
+  font-size: 20px;
+  line-height: 1;
+
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
 }
+
+.project-card .project-favorite:hover {
+  background: #b08d57;
+  transform: scale(1.05);
+}
+
+
+/* =========================================================
+   SHARE BUTTON
+   ========================================================= */
 
 .project-card .project-share {
-  right: 12px;
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+
+  background: rgba(17, 17, 17, 0.65);
+  color: #ffffff;
+
   font-size: 17px;
+  line-height: 1;
+
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
 }
 
-.project-card .project-favorite:hover,
-.project-card .project-share:hover,
-.project-card .project-favorite[aria-pressed="true"] {
-  border-color: #b08d57;
+.project-card .project-share:hover {
   background: #b08d57;
-  color: #fff;
+  transform: scale(1.05);
 }
+
+
+/* =========================================================
+   PROJECT CONTENT
+   ========================================================= */
 
 .project-card .project-content {
   display: flex;
-  min-width: 0;
-  flex: 1;
   flex-direction: column;
-  padding: 12px;
+
+  padding: 18px 18px 16px;
+
+  background: #ffffff;
 }
+
+
+/* =========================================================
+   TOP ROW
+   ========================================================= */
 
 .project-card .project-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 5px;
+
+  width: 100%;
+  margin-bottom: 8px;
 }
 
 .project-card .project-category {
-  overflow: hidden;
   color: #b08d57;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  text-overflow: ellipsis;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  line-height: 1.3;
   text-transform: uppercase;
-  white-space: nowrap;
 }
 
 .project-card .project-status-text {
-  overflow: hidden;
-  color: #777;
-  font-size: 10px;
-  font-weight: 600;
-  text-overflow: ellipsis;
+  overflow: visible;
+
+  color: #b08d57;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.3;
+
   white-space: nowrap;
 }
 
+
+/* =========================================================
+   PROJECT TITLE
+   ========================================================= */
+
 .project-card .project-title {
-  display: -webkit-box;
-  overflow: hidden;
-  min-height: 44px;
-  margin: 0 0 5px;
-  font: 600 20px/1.1 var(--display, 'Cormorant Garamond', Georgia, serif);
-  letter-spacing: -.015em;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  margin: 0 0 7px;
+
+  color: #111111;
+
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.3;
 }
 
 .project-card .project-title a {
-  color: #111;
+  color: inherit;
   text-decoration: none;
-  transition: color .2s ease;
+  transition: color 0.25s ease;
 }
 
 .project-card .project-title a:hover {
   color: #b08d57;
 }
 
+
+/* =========================================================
+   LOCATION
+   ========================================================= */
+
 .project-card .project-location {
   display: flex;
-  min-height: 16px;
-  align-items: center;
+  align-items: flex-start;
   gap: 6px;
-  overflow: hidden;
-  margin: 0 0 5px;
-  color: #777;
-  font-size: 11px;
-  line-height: 1.3;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+
+  margin: 0 0 9px;
+
+  color: #666666;
+
+  font-size: 12px;
+  line-height: 1.4;
 }
 
 .project-card .project-location span:first-child {
+  flex: 0 0 auto;
   color: #b08d57;
-  font-size: 16px;
+  font-size: 15px;
 }
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
 
 .project-card .project-description {
   display: -webkit-box;
-  min-height: 31px;
-  overflow: hidden;
-  margin: 0 0 7px;
-  color: #777;
-  font-size: 10px;
-  line-height: 1.55;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+
+  overflow: hidden;
+
+  margin: 0 0 13px;
+
+  color: #777777;
+
+  font-size: 12px;
+  line-height: 1.55;
 }
+
+
+/* =========================================================
+   PROJECT DETAILS
+   ========================================================= */
 
 .project-card .project-details {
   display: flex;
-  min-height: 32px;
   flex-wrap: wrap;
-  align-content: center;
-  gap: 6px 12px;
-  padding: 6px 0;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+  align-items: center;
+  gap: 7px 13px;
+
+  margin: 0 0 15px;
 }
 
 .project-card .project-detail {
   display: inline-flex;
-  min-width: 0;
   align-items: center;
   gap: 5px;
-  padding: 0;
-  color: #666;
-  font-size: 10px;
-  white-space: nowrap;
+
+  color: #666666;
+
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
 .project-card .project-detail-icon {
@@ -320,238 +363,325 @@
   font-size: 13px;
 }
 
+
+/* =========================================================
+   BOTTOM / VIEW DETAILS
+   ========================================================= */
+
 .project-card .project-bottom {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: auto;
-  padding-top: 8px;
-}
+  align-items: center;
 
-.project-card .project-price {
-  display: flex;
-  min-width: 0;
-  flex-direction: column;
-  gap: 3px;
-  margin: 0;
-}
-
-.project-card .project-price small {
-  color: #999;
-  font-size: 8px;
-  font-weight: 600;
-  letter-spacing: .7px;
-  text-transform: uppercase;
-}
-
-.project-card .project-price strong {
-  overflow: hidden;
-  color: #111;
-  font: 600 18px/1.15 var(--display, 'Cormorant Garamond', Georgia, serif);
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  margin-top: 0;
 }
 
 .project-card .project-button {
   display: inline-flex;
-  flex: 0 0 auto;
   align-items: center;
-  gap: 6px;
-  padding: 8px 10px;
-  background: #111;
-  color: #fff;
-  font-size: 9px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background .2s ease;
-}
+  justify-content: center;
+  gap: 8px;
 
-.project-card .project-button span {
-  font-size: 14px;
-  transition: transform .2s ease;
+  padding: 9px 14px;
+
+  background: #111111;
+  color: #ffffff;
+
+  border: 1px solid #111111;
+  border-radius: 4px;
+
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+
+  text-decoration: none;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
 }
 
 .project-card .project-button:hover {
   background: #b08d57;
-  color: #fff;
+  border-color: #b08d57;
+  transform: translateY(-1px);
 }
 
-.project-card .project-button:hover span {
-  transform: translateX(3px);
+.project-card .project-button span {
+  font-size: 15px;
 }
+
+
+/* =========================================================
+   FEEDBACK
+   ========================================================= */
 
 .project-card .project-feedback {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
+  display: block;
+
+  min-height: 0;
+  margin-top: 5px;
+
+  color: #777777;
+  font-size: 10px;
 }
+
+
+/* =========================================================
+   PROJECT SLIDER
+   ========================================================= */
+
+.projects-slider-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.projects-slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.projects-track {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.projects-track .project-card {
+  flex: 0 0 calc((100% - 40px) / 3);
+}
+
+
+/* =========================================================
+   SLIDER ARROWS
+   ========================================================= */
 
 .projects-arrow {
-  z-index: 1;
-  display: grid;
-  width: 42px;
-  height: 42px;
-  flex: 0 0 42px;
-  place-items: center;
-  padding: 0;
-  border: 1px solid #ddd;
-  background: #fff;
-  color: #111;
-  cursor: pointer;
-  transition: border-color .2s ease, background .2s ease, color .2s ease;
-}
+  position: absolute;
+  top: 50%;
+  z-index: 20;
 
-.projects-arrow span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  border: 1px solid #e7e7e7;
+  border-radius: 50%;
+
+  background: #ffffff;
+  color: #111111;
+
   font-size: 18px;
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+  box-shadow: 0 5px 15px rgba(17, 17, 17, 0.12);
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
 }
 
 .projects-arrow:hover:not(:disabled) {
-  border-color: #111;
-  background: #111;
-  color: #fff;
+  background: #b08d57;
+  color: #ffffff;
 }
 
 .projects-arrow:disabled {
-  opacity: .35;
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
+.projects-prev {
+  left: -20px;
+}
+
+.projects-next {
+  right: -20px;
+}
+
+
+/* =========================================================
+   PAGINATION
+   ========================================================= */
+
 .projects-pagination {
   display: flex;
-  min-height: 8px;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  margin-top: 14px;
+  gap: 6px;
+
+  margin-top: 18px;
 }
 
-.projects-dot {
-  width: 8px;
-  height: 8px;
+.projects-pagination button {
+  width: 7px;
+  height: 7px;
+
   padding: 0;
+
   border: 0;
-  border-radius: 8px;
+  border-radius: 50%;
+
   background: #d5d5d5;
+
   cursor: pointer;
-  transition: width .2s ease, background .2s ease;
 }
 
-.projects-dot.active {
-  width: 22px;
+.projects-pagination button.active {
+  width: 20px;
+  border-radius: 10px;
   background: #b08d57;
 }
 
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
 .projects-empty {
-  margin: 0;
-  padding: 24px;
-  border: 1px dashed #ddd;
-  color: #777;
+  margin: 30px 0;
+
+  color: #777777;
   text-align: center;
+
+  font-size: 14px;
 }
 
-.project-card :focus-visible,
-.projects-arrow:focus-visible,
-.projects-dot:focus-visible,
-.projects-view-all:focus-visible {
-  outline: 3px solid #b08d57;
-  outline-offset: 3px;
-}
 
-.projects-page-grid .project-card {
-  height: 100%;
-}
+/* =========================================================
+   TABLET
+   ========================================================= */
 
-@media (max-width: 991px) {
-  .project-card {
-    flex-basis: calc((100% - 25px) / 2);
-  }
-}
+@media (max-width: 1100px) {
 
-@media (max-width: 767px) {
-  .projects-section {
-    padding: 18px 0;
-  }
-
-  .projects-container {
-    width: 88%;
-  }
-
-  .projects-header {
-    align-items: flex-start;
-    margin-bottom: 10px;
-  }
-
-  .projects-section .projects-title h2 {
-    font-size: 33px;
-  }
-
-  .projects-slider-wrapper {
-    gap: 10px;
-  }
-
-  .project-card {
-    flex-basis: 100%;
+  .projects-track .project-card {
+    flex: 0 0 calc((100% - 20px) / 2);
   }
 
   .project-card .project-image {
-    height: 160px;
-    flex-basis: 160px;
+    height: 175px;
+    min-height: 175px;
+    max-height: 175px;
+    flex-basis: 175px;
   }
 
-  .projects-arrow {
-    width: 36px;
-    height: 36px;
-    flex-basis: 36px;
-  }
 }
 
-@media (max-width: 480px) {
-  .projects-container {
-    width: 92%;
+
+/* =========================================================
+   TABLET / SMALL DESKTOP
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+  .projects-track {
+    gap: 15px;
   }
 
-  .projects-header {
-    flex-direction: column;
-    gap: 14px;
+  .projects-track .project-card {
+    flex: 0 0 100%;
   }
 
-  .projects-section .projects-title h2 {
-    font-size: 32px;
+  .project-card .project-image {
+    height: 190px;
+    min-height: 190px;
+    max-height: 190px;
+    flex-basis: 190px;
   }
 
   .project-card .project-content {
-    padding: 12px;
+    padding: 16px;
   }
 
   .project-card .project-title {
-    min-height: 42px;
-    font-size: 19px;
+    font-size: 18px;
   }
 
-  .project-card .project-image {
-    height: 150px;
-    flex-basis: 150px;
+  .projects-prev {
+    left: 8px;
   }
 
-  .project-card .project-bottom {
-    align-items: center;
-    flex-direction: row;
+  .projects-next {
+    right: 8px;
   }
+
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .projects-track,
-  .project-card,
-  .project-card .project-image img,
-  .project-card .project-button span,
-  .projects-dot,
-  .projects-arrow,
-  .projects-view-all,
-  .projects-view-all span {
-    transition: none;
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .project-card .project-image {
+    height: 180px;
+    min-height: 180px;
+    max-height: 180px;
+    flex-basis: 180px;
   }
+
+  .project-card .project-status {
+    top: 10px !important;
+    left: 10px !important;
+
+    max-width: calc(100% - 20px) !important;
+
+    padding: 6px 11px !important;
+
+    font-size: 10px !important;
+  }
+
+  .project-card .project-favorite,
+  .project-card .project-share {
+    width: 32px;
+    height: 32px;
+  }
+
+  .project-card .project-favorite {
+    top: 9px;
+    right: 46px;
+  }
+
+  .project-card .project-share {
+    top: 9px;
+    right: 9px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+  .project-card .project-image {
+    height: 165px;
+    min-height: 165px;
+    max-height: 165px;
+    flex-basis: 165px;
+  }
+
+  .project-card .project-content {
+    padding: 14px;
+  }
+
+  .project-card .project-title {
+    font-size: 17px;
+  }
+
+  .project-card .project-status {
+    font-size: 9px !important;
+    padding: 5px 9px !important;
+  }
+
 }
