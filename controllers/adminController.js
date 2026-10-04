@@ -76,6 +76,9 @@ async function setup(req, res, next) {
   try {
     const existingAdmin = await User.exists({});
     if (existingAdmin) return res.status(403).render('error', { message: 'Administrator setup is already complete.', error: {} });
+    if (!process.env.ADMIN_SETUP_TOKEN || req.body.setupToken !== process.env.ADMIN_SETUP_TOKEN) {
+      return res.status(403).render('error', { message: 'Administrator setup is not authorized.', error: {} });
+    }
     const name = (req.body.name || '').trim();
     const email = (req.body.email || '').trim().toLowerCase();
     const password = req.body.password || '';
